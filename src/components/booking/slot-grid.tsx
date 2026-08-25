@@ -56,9 +56,9 @@ export function SlotGrid({
               "group flex items-center justify-between gap-4 rounded-sm border px-4 py-3.5 text-left",
               "transition-all duration-300 ease-out-soft",
               selected
-                ? "border-gold-500 bg-gold-50 shadow-card"
+                ? "border-coral-500 bg-coral-50 shadow-card"
                 : bookable
-                  ? "border-line bg-white hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-card"
+                  ? "border-line bg-white hover:-translate-y-0.5 hover:border-coral-400 hover:shadow-card"
                   : "cursor-not-allowed border-line opacity-45",
             )}
           >
@@ -66,7 +66,7 @@ export function SlotGrid({
               <span
                 className={cn(
                   "tnum block text-[14px] font-medium",
-                  selected ? "text-gold-700" : "text-text",
+                  selected ? "text-coral-700" : "text-text",
                 )}
               >
                 {to12h(slot.start)} &ndash; {to12h(slot.end)}

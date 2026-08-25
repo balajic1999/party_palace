@@ -62,10 +62,10 @@ export function HeroMedia() {
       {/* Legibility wash. Two layers: a left-weighted one so the headline always
           has contrast, and an overall darkener for the rest of the frame. */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/70 to-ink-900/25"
+        className="absolute inset-0 bg-gradient-to-r from-plum-900/95 via-plum-900/70 to-plum-900/25"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-ink-900/15" aria-hidden="true" />
+      <div className="absolute inset-0 bg-plum-900/15" aria-hidden="true" />
     </>
   );
 }

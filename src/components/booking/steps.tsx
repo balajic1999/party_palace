@@ -46,8 +46,8 @@ export function StepPackage({ draft, set }: StepProps) {
                 "flex gap-4 rounded-md border p-3 text-left sm:gap-5 sm:p-4",
                 "transition-all duration-300 ease-out-soft",
                 selected
-                  ? "border-gold-500 bg-gold-50 shadow-card"
-                  : "border-line bg-white hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-lift",
+                  ? "border-coral-500 bg-coral-50 shadow-card"
+                  : "border-line bg-white hover:-translate-y-0.5 hover:border-coral-400 hover:shadow-lift",
               )}
             >
               <Frame
@@ -66,11 +66,11 @@ export function StepPackage({ draft, set }: StepProps) {
                     className={cn(
                       "mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border",
                       "transition-colors duration-200",
-                      selected ? "border-gold-500 bg-gold-500" : "border-line",
+                      selected ? "border-coral-500 bg-coral-500" : "border-line",
                     )}
                     aria-hidden="true"
                   >
-                    {selected && <Check strokeWidth={3} className="size-3 text-ink-900" />}
+                    {selected && <Check strokeWidth={3} className="size-3 text-plum-900" />}
                   </span>
                 </span>
 
@@ -79,7 +79,7 @@ export function StepPackage({ draft, set }: StepProps) {
                 </span>
 
                 <span className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px]">
-                  <span className="tnum font-bold text-gold-600">{formatINR(p.price)}</span>
+                  <span className="tnum font-bold text-coral-700">{formatINR(p.price)}</span>
                   <span className="flex items-center gap-1.5 text-text-soft">
                     <Users strokeWidth={1.5} className="size-3.5" />
                     <span className="tnum">
@@ -115,7 +115,7 @@ export function StepPackage({ draft, set }: StepProps) {
 
           {draft.guests > current.baseGuests && (
             <p className="mt-4 flex gap-2.5 border-t border-line pt-4 text-[13px] text-text-mid">
-              <Info strokeWidth={1.5} className="mt-0.5 size-4 shrink-0 text-gold-600" />
+              <Info strokeWidth={1.5} className="mt-0.5 size-4 shrink-0 text-coral-700" />
               <span>
                 {draft.guests - current.baseGuests} extra{" "}
                 {plural(draft.guests - current.baseGuests, "guest")} &mdash; adds{" "}
@@ -205,16 +205,16 @@ export function StepExtras({ draft, set }: StepProps) {
             On the screen
           </p>
           <div className="mt-4 rounded-md border border-line bg-white p-4">
-            <div className="relative grid aspect-[16/9] place-items-center overflow-hidden rounded-sm bg-ink-900 px-6">
+            <div className="relative grid aspect-[16/9] place-items-center overflow-hidden rounded-sm bg-plum-900 px-6">
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(70% 90% at 50% 40%, rgba(217,174,69,0.22), transparent 72%)",
+                    "radial-gradient(70% 90% at 50% 40%, rgba(232,97,60,0.26), transparent 72%)",
                 }}
                 aria-hidden="true"
               />
-              <p className="relative text-balance text-center font-display text-[clamp(1rem,3.2vw,1.5rem)] leading-tight text-gold-300 transition-opacity duration-300">
+              <p className="relative text-balance text-center font-display text-[clamp(1rem,3.2vw,1.5rem)] leading-tight text-coral-300 transition-opacity duration-300">
                 {draft.screenMessage ||
                   (draft.celebrant
                     ? `Happy celebrations, ${draft.celebrant}!`
@@ -249,8 +249,8 @@ export function StepExtras({ draft, set }: StepProps) {
                     "flex items-center justify-between gap-4 rounded-sm border px-4 py-3",
                     "transition-colors duration-200",
                     selected
-                      ? "border-gold-500 bg-gold-50"
-                      : "border-line bg-white hover:border-gold-400",
+                      ? "border-coral-500 bg-coral-50"
+                      : "border-line bg-white hover:border-coral-400",
                   )}
                 >
                   <button
@@ -264,11 +264,11 @@ export function StepExtras({ draft, set }: StepProps) {
                       className={cn(
                         "mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-[4px] border",
                         "transition-colors duration-200",
-                        selected ? "border-gold-500 bg-gold-500" : "border-line",
+                        selected ? "border-coral-500 bg-coral-500" : "border-line",
                       )}
                       aria-hidden="true"
                     >
-                      {selected && <Check strokeWidth={3} className="size-2.5 text-ink-900" />}
+                      {selected && <Check strokeWidth={3} className="size-2.5 text-plum-900" />}
                     </span>
                     <span className="min-w-0">
                       <span className="block text-[14px] leading-snug text-text">

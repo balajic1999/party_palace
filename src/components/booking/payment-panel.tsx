@@ -58,7 +58,7 @@ export function PaymentPanel() {
   if (draft === undefined) {
     return (
       <div className="shell py-24 text-center">
-        <Loader2 className="mx-auto size-5 animate-spin text-gold-600" />
+        <Loader2 className="mx-auto size-5 animate-spin text-coral-700" />
         <span className="sr-only">Loading your booking…</span>
       </div>
     );
@@ -128,7 +128,7 @@ export function PaymentPanel() {
       >
         <Link
           href={backTo(4)}
-          className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-text-mid transition-colors duration-200 hover:text-gold-700"
+          className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-text-mid transition-colors duration-200 hover:text-coral-700"
         >
           <ArrowLeft
             strokeWidth={1.5}
@@ -145,7 +145,7 @@ export function PaymentPanel() {
             <div className="rounded-md border border-line bg-white shadow-card">
               <div className="flex items-start justify-between gap-4 border-b border-line p-6">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-gold-700">
+                  <p className="text-[10px] uppercase tracking-[0.16em] text-coral-700">
                     {pkg?.tagline}
                   </p>
                   <h2 className="mt-2 font-display text-[27px] font-semibold leading-tight text-text">
@@ -154,7 +154,7 @@ export function PaymentPanel() {
                 </div>
                 <Link
                   href={backTo(1)}
-                  className="flex shrink-0 items-center gap-1.5 text-[12.5px] text-text-mid transition-colors hover:text-gold-700"
+                  className="flex shrink-0 items-center gap-1.5 text-[12.5px] text-text-mid transition-colors hover:text-coral-700"
                 >
                   <Pencil strokeWidth={1.25} className="size-3.5" />
                   Change
@@ -184,7 +184,7 @@ export function PaymentPanel() {
                   {draft.screenMessage && (
                     <p className="text-[13.5px] text-text-mid">
                       On the screen:{" "}
-                      <span className="text-gold-700">&ldquo;{draft.screenMessage}&rdquo;</span>
+                      <span className="text-coral-700">&ldquo;{draft.screenMessage}&rdquo;</span>
                     </p>
                   )}
                   {extras.length > 0 && (
@@ -195,7 +195,7 @@ export function PaymentPanel() {
                         </p>
                         <Link
                           href={backTo(3)}
-                          className="text-[12.5px] text-text-mid transition-colors duration-200 hover:text-gold-700"
+                          className="text-[12.5px] text-text-mid transition-colors duration-200 hover:text-coral-700"
                         >
                           Change
                         </Link>
@@ -230,7 +230,7 @@ export function PaymentPanel() {
                   </p>
                   <Link
                     href={backTo(4)}
-                    className="text-[12.5px] text-text-mid transition-colors duration-200 hover:text-gold-700"
+                    className="text-[12.5px] text-text-mid transition-colors duration-200 hover:text-coral-700"
                   >
                     Change
                   </Link>
@@ -254,7 +254,7 @@ export function PaymentPanel() {
           {/* payment */}
           <div className="lg:col-span-5">
             <div className="sticky top-[var(--sticky-top)] rounded-md border border-line bg-cream p-6 shadow-card">
-              <p className="text-[10.5px] uppercase tracking-[0.18em] text-gold-700">
+              <p className="text-[10.5px] uppercase tracking-[0.18em] text-coral-700">
                 Pay the advance
               </p>
 
@@ -322,7 +322,7 @@ export function PaymentPanel() {
               </Button>
 
               <p className="mt-4 flex items-start gap-2.5 text-[11.5px] leading-relaxed text-text-soft">
-                <ShieldCheck strokeWidth={1.25} className="mt-0.5 size-3.5 shrink-0 text-gold-600" />
+                <ShieldCheck strokeWidth={1.25} className="mt-0.5 size-3.5 shrink-0 text-coral-700" />
                 UPI, card and net banking. Free reschedule with 24 hours&rsquo;
                 notice; advance held as credit if you cancel more than 48 hours out.
               </p>
@@ -338,7 +338,7 @@ export function PaymentPanel() {
                     type="checkbox"
                     checked={forceFail}
                     onChange={(e) => setForceFail(e.target.checked)}
-                    className="size-3.5 accent-gold-400"
+                    className="size-3.5 accent-coral-400"
                   />
                   Demo control — simulate a failed payment
                 </label>
@@ -365,13 +365,13 @@ function Fact({
   return (
     <div>
       <dt className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-text-soft">
-        <Icon strokeWidth={1.25} className="size-3.5 text-gold-600" />
+        <Icon strokeWidth={1.25} className="size-3.5 text-coral-700" />
         {k}
       </dt>
       <dd className="mt-1.5">
         <Link
           href={href}
-          className="text-[14.5px] text-text transition-colors hover:text-gold-700"
+          className="text-[14.5px] text-text transition-colors hover:text-coral-700"
         >
           {children}
         </Link>

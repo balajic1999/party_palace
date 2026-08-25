@@ -50,7 +50,7 @@ export function Calendar({
     setCursor((c) => new Date(c.getFullYear(), c.getMonth() + n, 1));
 
   const navBtn =
-    "grid size-9 place-items-center rounded-full border border-line text-text transition-colors hover:border-gold-500 hover:text-gold-700 disabled:pointer-events-none disabled:opacity-30";
+    "grid size-9 place-items-center rounded-full border border-line text-text transition-colors hover:border-coral-500 hover:text-coral-700 disabled:pointer-events-none disabled:opacity-30";
 
   return (
     <div className="rounded-md border border-line bg-white p-4 sm:p-5 shadow-card">
@@ -115,11 +115,11 @@ export function Calendar({
                 "relative grid aspect-square place-items-center rounded-sm text-[13.5px]",
                 "transition-all duration-200 ease-out-soft",
                 selected
-                  ? "bg-gold-500 font-semibold text-ink-900 shadow-card"
+                  ? "bg-coral-600 font-semibold text-white shadow-card"
                   : disabled
                     ? "cursor-not-allowed text-text-soft/40"
-                    : "text-text hover:bg-gold-50 hover:text-gold-700",
-                isToday && !selected && "ring-1 ring-inset ring-gold-400",
+                    : "text-text hover:bg-coral-50 hover:text-coral-700",
+                isToday && !selected && "ring-1 ring-inset ring-coral-400",
               )}
             >
               <span className="tnum">{d.getDate()}</span>
@@ -141,7 +141,7 @@ export function Calendar({
         {[
           { c: "bg-ok", l: "Slots open" },
           { c: "bg-warn", l: "Almost full" },
-          { c: "bg-ink-700", l: "Sold out" },
+          { c: "bg-plum-700", l: "Sold out" },
         ].map((k) => (
           <span key={k.l} className="flex items-center gap-2 text-[11.5px] text-text-soft">
             <span className={cn("size-1.5 rounded-full", k.c)} aria-hidden="true" />

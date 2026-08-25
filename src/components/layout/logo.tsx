@@ -31,14 +31,14 @@ export function Logo({
 }) {
   const inner = (
     <>
-      <Crown className="mx-auto text-gold-500" />
+      <Crown className="mx-auto text-coral-500" />
       <span
         className={cn(
           "mt-1 block font-display text-[21px] leading-none tracking-[0.02em] sm:text-[23px]",
           tone === "dark" ? "text-text" : "text-white",
         )}
       >
-        PARTY<span className="text-gold-500">PALACE</span>
+        PARTY<span className="text-coral-500">PALACE</span>
       </span>
       <span
         className={cn(

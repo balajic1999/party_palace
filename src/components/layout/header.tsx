@@ -85,24 +85,24 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[120] focus:rounded-sm focus:bg-gold-500 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-ink-900"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[120] focus:rounded-sm focus:bg-coral-600 focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
       >
         Skip to content
       </a>
 
       {/* utility strip */}
-      <div className="hidden bg-ink-900 text-white/80 md:block">
+      <div className="hidden bg-plum-900 text-white/80 md:block">
         <div className="shell flex h-9 items-center justify-between text-[12px]">
           <p className="flex items-center gap-1.5">
-            <MapPin strokeWidth={1.5} className="size-3.5 text-gold-500" />
+            <MapPin strokeWidth={1.5} className="size-3.5 text-coral-500" />
             {site.address.city}, {site.address.state}
           </p>
           <div className="flex items-center gap-6">
             <a
               href={site.phoneHref}
-              className="flex items-center gap-1.5 transition-colors hover:text-gold-400"
+              className="flex items-center gap-1.5 transition-colors hover:text-coral-400"
             >
-              <Phone strokeWidth={1.5} className="size-3.5 text-gold-500" />
+              <Phone strokeWidth={1.5} className="size-3.5 text-coral-500" />
               <span className="tnum">{site.phone}</span>
             </a>
             <a
@@ -111,9 +111,9 @@ export function Header() {
               )}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 transition-colors hover:text-gold-400"
+              className="flex items-center gap-1.5 transition-colors hover:text-coral-400"
             >
-              <MessageCircle strokeWidth={1.5} className="size-3.5 text-gold-500" />
+              <MessageCircle strokeWidth={1.5} className="size-3.5 text-coral-500" />
               WhatsApp Us
             </a>
           </div>
@@ -123,7 +123,7 @@ export function Header() {
       {/* main bar */}
       <div
         className={cn(
-          "border-b bg-white/95 backdrop-blur transition-[box-shadow,border-color] duration-300 ease-out-soft",
+          "border-b bg-page/90 backdrop-blur transition-[box-shadow,border-color] duration-300 ease-out-soft",
           scrolled ? "border-line shadow-bar" : "border-transparent",
         )}
       >
@@ -139,8 +139,8 @@ export function Header() {
                 className={cn(
                   "link-sweep text-[14px] transition-colors duration-200",
                   isActive(item)
-                    ? "font-semibold text-gold-700"
-                    : "text-text-mid hover:text-gold-700",
+                    ? "font-semibold text-coral-700"
+                    : "text-text-mid hover:text-coral-700",
                 )}
               >
                 {item.label}
@@ -157,7 +157,7 @@ export function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="grid size-10 place-items-center rounded-sm border border-line text-text transition-colors duration-200 hover:border-gold-500 hover:text-gold-700 lg:hidden"
+              className="grid size-10 place-items-center rounded-sm border border-line text-text transition-colors duration-200 hover:border-coral-500 hover:text-coral-700 lg:hidden"
             >
               {open ? (
                 <X strokeWidth={1.6} className="size-5 enter-scale" />
@@ -171,14 +171,14 @@ export function Header() {
 
       {/* mobile drawer */}
       {open && (
-        <div className="drawer-in fixed inset-x-0 bottom-0 top-[70px] z-40 overflow-y-auto border-t border-line bg-white lg:hidden">
+        <div className="drawer-in fixed inset-x-0 bottom-0 top-[70px] z-40 overflow-y-auto border-t border-line bg-page lg:hidden">
           <nav aria-label="Mobile" className="shell flex flex-col py-2">
             {NAV.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-line py-4 text-[16px] text-text transition-colors duration-200 hover:text-gold-700"
+                className="flex items-center justify-between border-b border-line py-4 text-[16px] text-text transition-colors duration-200 hover:text-coral-700"
               >
                 {item.label}
                 <ChevronRight

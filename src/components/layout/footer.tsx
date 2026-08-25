@@ -25,7 +25,7 @@ export function Footer() {
   return (
     <>
       {/* Quick contact — phone only, matching the mobile layout */}
-      <section className="bg-ink-800 py-8 sm:hidden" aria-label="Quick contact">
+      <section className="bg-plum-800 py-8 sm:hidden" aria-label="Quick contact">
         <h2 className="text-center font-display text-[18px] font-semibold text-white">
           Quick Contact
         </h2>
@@ -54,7 +54,7 @@ export function Footer() {
         </div>
       </section>
 
-      <footer id="contact" className="bg-ink-900 text-white/75">
+      <footer id="contact" className="bg-plum-900 text-white/75">
         <div className="shell py-14 md:py-16">
           <div className="grid gap-10 md:grid-cols-12 md:gap-8">
             {/* brand */}
@@ -108,7 +108,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex gap-2.5 text-white/60 transition-colors hover:text-white"
                 >
-                  <MapPin strokeWidth={1.5} className="mt-0.5 size-4 shrink-0 text-gold-500" />
+                  <MapPin strokeWidth={1.5} className="mt-0.5 size-4 shrink-0 text-coral-500" />
                   <span>
                     {addressLines.map((l) => (
                       <span key={l} className="block">
@@ -121,18 +121,18 @@ export function Footer() {
                   href={site.phoneHref}
                   className="flex items-center gap-2.5 text-white/60 transition-colors hover:text-white"
                 >
-                  <Phone strokeWidth={1.5} className="size-4 shrink-0 text-gold-500" />
+                  <Phone strokeWidth={1.5} className="size-4 shrink-0 text-coral-500" />
                   <span className="tnum">{site.phone}</span>
                 </a>
                 <a
                   href={`mailto:${site.email}`}
                   className="flex items-center gap-2.5 text-white/60 transition-colors hover:text-white"
                 >
-                  <Mail strokeWidth={1.5} className="size-4 shrink-0 text-gold-500" />
+                  <Mail strokeWidth={1.5} className="size-4 shrink-0 text-coral-500" />
                   {site.email}
                 </a>
                 <p className="flex items-center gap-2.5 text-white/60">
-                  <Clock strokeWidth={1.5} className="size-4 shrink-0 text-gold-500" />
+                  <Clock strokeWidth={1.5} className="size-4 shrink-0 text-coral-500" />
                   <span className="tnum">
                     {site.hoursLabel} ({site.hoursNote})
                   </span>
@@ -208,7 +208,7 @@ function QuickAction({
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group flex w-20 flex-col items-center gap-2 text-center"
     >
-      <span className="grid size-12 place-items-center rounded-full border border-gold-500/50 bg-white/5 text-gold-400 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-gold-400 group-hover:bg-white/10">
+      <span className="grid size-12 place-items-center rounded-full border border-coral-500/50 bg-white/5 text-coral-400 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-coral-400 group-hover:bg-white/10">
         {children}
       </span>
       <span className="text-[12px] text-white/70">{label}</span>
@@ -218,7 +218,7 @@ function QuickAction({
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-gold-500">
+    <h2 className="text-[13px] font-semibold uppercase tracking-[0.16em] text-coral-500">
       {children}
     </h2>
   );
@@ -228,7 +228,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="link-sweep text-[13.5px] text-white/60 transition-colors duration-200 hover:text-gold-400"
+      className="link-sweep text-[13.5px] text-white/60 transition-colors duration-200 hover:text-coral-400"
     >
       {children}
     </Link>
@@ -277,7 +277,7 @@ function Social({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="grid size-9 place-items-center rounded-full border border-white/20 text-white/70 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:border-gold-500 hover:bg-white/5 hover:text-gold-400"
+      className="grid size-9 place-items-center rounded-full border border-white/20 text-white/70 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:border-coral-500 hover:bg-white/5 hover:text-coral-400"
     >
       {children}
     </a>

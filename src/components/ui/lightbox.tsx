@@ -56,7 +56,7 @@ export function Lightbox({
   const navBtn =
     "absolute top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full " +
     "border border-white/25 bg-white/10 text-white backdrop-blur-sm " +
-    "transition-colors duration-200 hover:border-gold-400 hover:bg-white/20 hover:text-gold-300";
+    "transition-colors duration-200 hover:border-coral-400 hover:bg-white/20 hover:text-coral-300";
 
   return (
     <AnimatePresence>
@@ -65,7 +65,7 @@ export function Lightbox({
           role="dialog"
           aria-modal="true"
           aria-label="Photo gallery"
-          className="fixed inset-0 z-[100] grid place-items-center bg-ink-900/92 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] grid place-items-center bg-plum-900/92 p-4 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -76,7 +76,7 @@ export function Lightbox({
             ref={closeRef}
             onClick={onClose}
             aria-label="Close gallery"
-            className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-sm transition-colors duration-200 hover:border-gold-400 hover:bg-white/20 hover:text-gold-300"
+            className="absolute right-4 top-4 z-10 grid size-11 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-sm transition-colors duration-200 hover:border-coral-400 hover:bg-white/20 hover:text-coral-300"
           >
             <X strokeWidth={1.25} className="size-5" />
           </button>
@@ -113,7 +113,7 @@ export function Lightbox({
           >
             <Frame {...slides[index]} ratio="aspect-[16/10]" className="rounded-md" />
             <p className="mt-4 text-center text-[11px] uppercase tracking-[0.16em] text-white/70">
-              <span className="tnum text-gold-400">
+              <span className="tnum text-coral-400">
                 {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
               </span>
               <span className="mx-3 text-white/35">&mdash;</span>

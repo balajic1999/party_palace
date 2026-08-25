@@ -82,7 +82,7 @@ export function MyBookings() {
         <p className="mt-5 text-[12.5px] leading-relaxed text-text-soft">
           Bookings are saved to the browser you booked from. If you booked on
           another phone or laptop, call us on{" "}
-          <a href={site.phoneHref} className="text-gold-700">
+          <a href={site.phoneHref} className="text-coral-700">
             {site.phone}
           </a>{" "}
           and we will pull it up.
@@ -129,13 +129,13 @@ function BookingRow({ booking }: { booking: Booking }) {
       >
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="tnum text-[11px] tracking-[0.08em] text-gold-700">
+            <span className="tnum text-[11px] tracking-[0.08em] text-coral-700">
               {booking.ref}
             </span>
             <Badge tone={past ? "off" : "ok"}>{past ? "Past" : "Upcoming"}</Badge>
           </div>
 
-          <h2 className="mt-2.5 font-display text-[22px] font-semibold leading-tight text-text transition-colors duration-200 group-hover:text-gold-700">
+          <h2 className="mt-2.5 font-display text-[22px] font-semibold leading-tight text-text transition-colors duration-200 group-hover:text-coral-700">
             {pkg?.name ?? "Private theatre"}
           </h2>
 
@@ -170,7 +170,7 @@ function BookingRow({ booking }: { booking: Booking }) {
 
         <ArrowUpRight
           strokeWidth={1.25}
-          className="mt-1 size-5 shrink-0 text-text-soft transition-all duration-[420ms] ease-out-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold-600"
+          className="mt-1 size-5 shrink-0 text-text-soft transition-all duration-[420ms] ease-out-soft group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-coral-700"
         />
       </Link>
     </li>

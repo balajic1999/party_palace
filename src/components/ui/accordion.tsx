@@ -20,7 +20,7 @@ export function Accordion({ items, className }: { items: Faq[]; className?: stri
             key={item.q}
             className={cn(
               "overflow-hidden rounded-sm border bg-white transition-colors duration-200",
-              isOpen ? "border-gold-400" : "border-line hover:border-gold-400/60",
+              isOpen ? "border-coral-400" : "border-line hover:border-coral-400/60",
             )}
           >
             <h3>
@@ -34,7 +34,7 @@ export function Accordion({ items, className }: { items: Faq[]; className?: stri
                 <span
                   className={cn(
                     "text-[14px] font-medium",
-                    isOpen ? "text-gold-700" : "text-text",
+                    isOpen ? "text-coral-700" : "text-text",
                   )}
                 >
                   {item.q}
@@ -43,7 +43,7 @@ export function Accordion({ items, className }: { items: Faq[]; className?: stri
                   strokeWidth={2}
                   className={cn(
                     "size-4 shrink-0 text-text-soft transition-transform duration-200",
-                    isOpen && "rotate-90 text-gold-600",
+                    isOpen && "rotate-90 text-coral-700",
                   )}
                 />
               </button>

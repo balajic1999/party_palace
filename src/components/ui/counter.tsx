@@ -22,7 +22,7 @@ export function Counter({
 }) {
   const btn = cn(
     "grid place-items-center rounded-full border border-line text-text",
-    "transition-colors duration-200 hover:border-gold-500 hover:text-gold-700",
+    "transition-colors duration-200 hover:border-coral-500 hover:text-coral-700",
     "disabled:pointer-events-none disabled:opacity-30",
     size === "sm" ? "size-8" : "size-10",
   );

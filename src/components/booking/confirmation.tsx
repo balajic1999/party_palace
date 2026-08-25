@@ -74,7 +74,7 @@ export function Confirmation({ reference }: { reference: string }) {
   if (booking === undefined) {
     return (
       <div className="shell py-24 text-center">
-        <Loader2 className="mx-auto size-5 animate-spin text-gold-600" />
+        <Loader2 className="mx-auto size-5 animate-spin text-coral-700" />
         <span className="sr-only">Loading your booking…</span>
       </div>
     );
@@ -162,7 +162,7 @@ export function Confirmation({ reference }: { reference: string }) {
 
         <div className="enter-up stagger-4 lg:col-span-4">
           <div className="rounded-md border border-line bg-cream p-6">
-            <p className="text-[10.5px] uppercase tracking-[0.18em] text-gold-700">
+            <p className="text-[10.5px] uppercase tracking-[0.18em] text-coral-700">
               Before you go
             </p>
 
@@ -206,7 +206,7 @@ export function Confirmation({ reference }: { reference: string }) {
               </li>
               <li>
                 Need to change something? Call{" "}
-                <a href={site.phoneHref} className="text-gold-700">
+                <a href={site.phoneHref} className="text-coral-700">
                   {site.phone}
                 </a>{" "}
                 at least 24 hours ahead.
@@ -215,7 +215,7 @@ export function Confirmation({ reference }: { reference: string }) {
 
             <Link
               href="/my-bookings"
-              className="link-sweep mt-6 inline-block text-[13.5px] text-gold-700 print:hidden"
+              className="link-sweep mt-6 inline-block text-[13.5px] text-coral-700 print:hidden"
             >
               See all my bookings
             </Link>

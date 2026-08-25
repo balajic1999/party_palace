@@ -68,7 +68,7 @@ export default async function PackagePage({
             <div className="enter-up stagger-1 lg:col-span-5">
               {/* short label only — the tagline is a full sentence and wraps
                   to two lines at this tracking */}
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-coral-700">
                 Package
               </p>
               <h1 className="mt-2.5 font-display text-[clamp(1.9rem,4.6vw,2.6rem)] font-semibold leading-[1.12]">
@@ -83,19 +83,19 @@ export default async function PackagePage({
                   <p className="text-[11px] uppercase tracking-[0.12em] text-text-soft">
                     Starts from
                   </p>
-                  <p className="tnum mt-1 text-[32px] font-bold leading-none text-gold-600">
+                  <p className="tnum mt-1 text-[32px] font-bold leading-none text-coral-700">
                     {formatINR(pkg.price)}
                   </p>
                 </div>
                 <ul className="ml-auto space-y-1.5 text-[13px] text-text-mid">
                   <li className="flex items-center gap-2">
-                    <Users strokeWidth={1.5} className="size-3.5 text-gold-600" />
+                    <Users strokeWidth={1.5} className="size-3.5 text-coral-700" />
                     <span className="tnum">
                       {pkg.baseGuests}&ndash;{pkg.maxGuests} guests
                     </span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <Clock strokeWidth={1.5} className="size-3.5 text-gold-600" />
+                    <Clock strokeWidth={1.5} className="size-3.5 text-coral-700" />
                     {pkg.durationHours} hours
                   </li>
                 </ul>
@@ -141,7 +141,7 @@ export default async function PackagePage({
           <ul className="grid gap-3 md:col-span-7 sm:grid-cols-2">
             {pkg.includes.map((item) => (
               <li key={item} className="flex gap-2.5 text-[14px] leading-relaxed text-text-mid">
-                <Check strokeWidth={2} className="mt-0.5 size-4 shrink-0 text-gold-600" />
+                <Check strokeWidth={2} className="mt-0.5 size-4 shrink-0 text-coral-700" />
                 {item}
               </li>
             ))}

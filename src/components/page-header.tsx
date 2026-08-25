@@ -24,7 +24,7 @@ export function Breadcrumb({
           <li key={c.href} className="flex items-center gap-1.5">
             <Link
               href={c.href}
-              className="link-sweep transition-colors duration-200 hover:text-gold-700"
+              className="link-sweep transition-colors duration-200 hover:text-coral-700"
             >
               {c.label}
             </Link>
@@ -76,7 +76,7 @@ export function PageHeader({
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="enter-up">
             {eyebrow && (
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-coral-700">
                 {eyebrow}
               </p>
             )}

@@ -1,47 +1,60 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Party Palace — light "celebrate in style" theme
-   White canvas, warm cream bands, gold accent, dark footer.
+   Party Palace — warm "celebrate in style" theme
+   Peach ground, deeper cream bands, coral accent, plum darks.
 
    Two type roles and only two:
      display (Playfair) — headings, the ticket, the logo
      sans    (Inter)    — everything else, including all numbers
+
+   Contrast notes, because the coral ramp is easy to misuse:
+     coral-700  small text on peach        5.6:1  ✓ AA
+     coral-600  button fills, white label  4.8:1  ✓ AA
+     coral-500  the brand coral — large display type, borders,
+                icon fills, dots. 3.4:1 on white, so NEVER put
+                small text in it on a light ground.
+     coral-400  for use on the plum darks  5.7:1  ✓ AA
    ============================================================ */
 
 @theme {
-  /* --- surfaces --- */
-  --color-page: #ffffff;
-  --color-cream: #faf7f1;
-  --color-cream-deep: #f4efe4;
-  --color-line: #e9e3d9;
-  --color-line-soft: #f1ece3;
+  /* --- surfaces: a warm peach ground, not a white one --- */
+  --color-page: #f9efe6;
+  --color-cream: #f4e7d9;
+  --color-cream-deep: #eddbc9;
+  --color-line: #e6d3c2;
+  --color-line-soft: #f0e2d4;
 
   /* --- dark surfaces: hero overlay, footer, top bar --- */
-  --color-ink-900: #14110e;
-  --color-ink-800: #221e1a;
-  --color-ink-700: #35302a;
-  --color-ink-600: #4a443c;
+  --color-plum-900: #2e1526;
+  --color-plum-800: #3d1d33;
+  --color-plum-700: #522944;
+  --color-plum-600: #6b3a5a;
 
-  /* --- gold ramp. 700 is the only one safe for small text on white. --- */
-  --color-gold-700: #8a6614;
-  --color-gold-600: #a8801f;
-  --color-gold-500: #c79a2e;
-  --color-gold-400: #d9ae45;
-  --color-gold-300: #e7c877;
-  --color-gold-200: #efdca8;
-  --color-gold-100: #f6e9c9;
-  --color-gold-50: #fbf4e4;
+  /* --- coral ramp. See the contrast table above before picking one. --- */
+  --color-coral-700: #a83a17;
+  --color-coral-600: #c9461c;
+  --color-coral-500: #e8613c;
+  --color-coral-400: #f2825f;
+  --color-coral-300: #f7a98d;
+  --color-coral-200: #fac9b6;
+  --color-coral-100: #fbdccf;
+  --color-coral-50: #fdf0e9;
 
-  /* --- type --- */
-  --color-text: #1c1917;
-  --color-text-mid: #57534e;
-  --color-text-soft: #8a8378;
+  /* --- soft green, used only as a decorative shape behind photos --- */
+  --color-sage: #dfe3cf;
+  --color-sage-deep: #c7cfb2;
 
-  /* --- signals --- */
-  --color-ok: #3f8f5f;
-  --color-warn: #b4701a;
-  --color-off: #b4402f;
+  /* --- type: plum-tinted rather than neutral grey, to sit on peach --- */
+  --color-text: #35222f;
+  --color-text-mid: #6b5560;
+  --color-text-soft: #7d6a74;
+
+  /* --- signals. `off` is pulled toward crimson so it cannot be
+         mistaken for the coral accent. --- */
+  --color-ok: #3f7d55;
+  --color-warn: #a86a15;
+  --color-off: #9c2f2a;
 
   /* --- fonts (wired in layout.tsx via next/font) --- */
   --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
@@ -51,10 +64,11 @@
   --radius-md: 10px;
   --radius-lg: 16px;
 
-  /* Warm shadows, not grey ones — a neutral shadow over cream reads dirty. */
-  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04);
-  --shadow-lift: 0 14px 30px -16px rgb(28 25 23 / 0.24);
-  --shadow-bar: 0 10px 24px -22px rgb(28 25 23 / 0.45);
+  /* Plum-tinted shadows, not grey ones — a neutral shadow over peach
+     reads dirty. */
+  --shadow-card: 0 1px 2px rgb(46 21 38 / 0.05);
+  --shadow-lift: 0 14px 30px -16px rgb(46 21 38 / 0.22);
+  --shadow-bar: 0 10px 24px -22px rgb(46 21 38 / 0.4);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
@@ -99,12 +113,12 @@
   }
 
   ::selection {
-    background: var(--color-gold-100);
+    background: var(--color-coral-100);
     color: var(--color-text);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gold-600);
+    outline: 2px solid var(--color-coral-600);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -118,6 +132,17 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+
+    /* The blanket rule above would run the marquee once in 0.01ms and leave
+       the track parked half-way. Stop it dead and let the strip be scrolled
+       by hand instead — higher specificity than `*`, so this !important wins. */
+    .marquee-track {
+      animation: none !important;
+      transform: none !important;
+    }
+    .marquee {
+      overflow-x: auto;
+    }
   }
 }
 
@@ -129,7 +154,7 @@
     padding-inline: var(--page-x);
   }
 
-  /* Section label ornament: gold rule with a diamond in the middle. */
+  /* Section label ornament: coral rule with a diamond in the middle. */
   .rule-ornament {
     position: relative;
     display: block;
@@ -144,7 +169,7 @@
     top: 4px;
     width: 26px;
     height: 1px;
-    background: var(--color-gold-500);
+    background: var(--color-coral-500);
   }
   .rule-ornament::before { left: 0; }
   .rule-ornament::after { right: 0; }
@@ -156,7 +181,7 @@
     width: 7px;
     height: 7px;
     margin-left: -3.5px;
-    background: var(--color-gold-500);
+    background: var(--color-coral-500);
     transform: rotate(45deg);
   }
 
@@ -173,7 +198,7 @@
   .lift:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lift);
-    border-color: var(--color-gold-400);
+    border-color: var(--color-coral-400);
   }
   .lift:active {
     transform: translateY(-1px);
@@ -212,14 +237,32 @@
     background-repeat: repeat-x;
   }
 
+  /* Reviews strip. The track is two identical halves; -50% lands exactly on
+     the start of the second half, so the loop has no seam. Duration scales
+     with how much is in the track — edit it, not the keyframe. */
+  .marquee {
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    width: max-content;
+    animation: pp-marquee var(--marquee-duration, 60s) linear infinite;
+  }
+
+  /* Stop for anyone reading one, by pointer or by keyboard. */
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
   /* Soft warm glow. Decoration only — never sits behind body text. */
   .beam {
     position: absolute;
     pointer-events: none;
     background: radial-gradient(
       closest-side,
-      rgb(199 154 46 / 0.16),
-      rgb(199 154 46 / 0.05) 55%,
+      rgb(232 97 60 / 0.14),
+      rgb(232 97 60 / 0.04) 55%,
       transparent 78%
     );
   }
@@ -256,6 +299,11 @@
 @keyframes pp-scale-in {
   from { opacity: 0; transform: scale(0.985); }
   to   { opacity: 1; transform: none; }
+}
+
+@keyframes pp-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 @keyframes pp-drawer-in {

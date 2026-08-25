@@ -4,7 +4,7 @@ type Tone = "neutral" | "gold" | "ok" | "warn" | "off";
 
 const tones: Record<Tone, string> = {
   neutral: "border-line text-text-mid",
-  gold: "border-gold-500/40 text-gold-700 bg-gold-50",
+  gold: "border-coral-500/40 text-coral-700 bg-coral-50",
   ok: "border-ok/30 text-ok bg-ok/5",
   warn: "border-warn/35 text-warn bg-warn/5",
   off: "border-line text-text-soft",

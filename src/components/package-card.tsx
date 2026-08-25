@@ -23,7 +23,7 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
           className="transition-transform duration-[600ms] ease-out-soft group-hover:scale-[1.04]"
         />
         {pkg.popular && (
-          <span className="absolute left-3 top-3 rounded-sm bg-gold-500 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.1em] text-ink-900">
+          <span className="absolute left-3 top-3 rounded-sm bg-coral-600 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.1em] text-white">
             Most booked
           </span>
         )}
@@ -42,7 +42,7 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
           <span className="text-[11px] uppercase tracking-[0.12em] text-text-soft">
             Starts from
           </span>
-          <span className="tnum text-[24px] font-bold leading-none text-gold-600">
+          <span className="tnum text-[24px] font-bold leading-none text-coral-700">
             {formatINR(pkg.price)}
           </span>
         </div>
@@ -50,7 +50,7 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
         <ul className="mt-4 space-y-2">
           {pkg.features.map((f) => (
             <li key={f} className="flex items-start gap-2 text-[13.5px] text-text-mid">
-              <Check strokeWidth={2} className="mt-0.5 size-3.5 shrink-0 text-gold-600" />
+              <Check strokeWidth={2} className="mt-0.5 size-3.5 shrink-0 text-coral-700" />
               {f}
             </li>
           ))}
@@ -94,7 +94,7 @@ export function PackageCardCompact({ pkg }: { pkg: Package }) {
         <p className="mt-2 text-[11px] uppercase tracking-[0.12em] text-text-soft">
           Starts from
         </p>
-        <p className="tnum mt-0.5 text-[22px] font-bold leading-none text-gold-600">
+        <p className="tnum mt-0.5 text-[22px] font-bold leading-none text-coral-700">
           {formatINR(pkg.price)}
         </p>
       </div>

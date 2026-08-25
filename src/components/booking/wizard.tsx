@@ -182,7 +182,7 @@ export function BookingWizard() {
                     <span
                       className={cn(
                         "block h-1 origin-left rounded-full transition-all duration-500 ease-out-soft",
-                        active || done ? "bg-gold-500" : "bg-line",
+                        active || done ? "bg-coral-500" : "bg-line",
                         active && "shadow-[0_0_0_3px_rgb(199_154_46_/_0.16)]",
                       )}
                     />
@@ -190,7 +190,7 @@ export function BookingWizard() {
                       className={cn(
                         "mt-2.5 hidden text-[12px] transition-colors duration-300 sm:block",
                         active
-                          ? "font-semibold text-gold-700"
+                          ? "font-semibold text-coral-700"
                           : done
                             ? "text-text-mid"
                             : "text-text-soft",

@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="beam -right-[6%] -top-[40%] h-[80vh] w-[60vw]" aria-hidden="true" />
       <div className="shell relative grid min-h-[62vh] place-items-center py-24 text-center">
         <div className="enter-up max-w-md">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-700">Error 404</p>
+          <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-coral-700">Error 404</p>
           <h1 className="mt-6 font-display text-[clamp(2rem,5vw,2.9rem)] font-semibold leading-[1.06]">
             Nothing showing on this screen.
           </h1>
@@ -25,7 +25,7 @@ export default function NotFound() {
           </div>
           <p className="mt-8 text-[13px] text-text-soft">
             Looking for a booking? Call{" "}
-            <a href={site.phoneHref} className="text-gold-700">
+            <a href={site.phoneHref} className="text-coral-700">
               {site.phone}
             </a>
           </p>

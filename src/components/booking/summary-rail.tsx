@@ -27,7 +27,7 @@ export function SummaryRail({
         className,
       )}
     >
-      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-coral-700">
         Your booking
       </p>
 
@@ -40,7 +40,7 @@ export function SummaryRail({
           <ul className="mt-3 space-y-2 text-[13px] text-text-mid">
             {draft.date && (
               <li className="flex items-center gap-2.5">
-                <CalendarDays strokeWidth={1.5} className="size-3.5 shrink-0 text-gold-600" />
+                <CalendarDays strokeWidth={1.5} className="size-3.5 shrink-0 text-coral-700" />
                 {fromISODate(draft.date).toLocaleDateString("en-IN", {
                   weekday: "short",
                   day: "numeric",
@@ -50,14 +50,14 @@ export function SummaryRail({
             )}
             {slot && (
               <li className="flex items-center gap-2.5">
-                <Clock strokeWidth={1.5} className="size-3.5 shrink-0 text-gold-600" />
+                <Clock strokeWidth={1.5} className="size-3.5 shrink-0 text-coral-700" />
                 <span className="tnum">
                   {to12h(slot.start)} &ndash; {to12h(slot.end)}
                 </span>
               </li>
             )}
             <li className="flex items-center gap-2.5">
-              <Users strokeWidth={1.5} className="size-3.5 shrink-0 text-gold-600" />
+              <Users strokeWidth={1.5} className="size-3.5 shrink-0 text-coral-700" />
               <span className="tnum">{draft.guests}</span> guests
             </li>
           </ul>
@@ -109,8 +109,8 @@ export function SummaryRail({
 
             <dl className="mt-4 space-y-1.5 rounded-sm bg-white p-3.5 text-[12.5px]">
               <div className="flex justify-between gap-4">
-                <dt className="font-semibold text-gold-700">Pay now to hold the slot</dt>
-                <dd className="tnum font-semibold text-gold-700">
+                <dt className="font-semibold text-coral-700">Pay now to hold the slot</dt>
+                <dd className="tnum font-semibold text-coral-700">
                   {formatINR(quote.advance)}
                 </dd>
               </div>

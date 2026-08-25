@@ -55,8 +55,8 @@ export default async function PolicyPage({
                       aria-current={p.slug === policy.slug ? "page" : undefined}
                       className={
                         p.slug === policy.slug
-                          ? "text-[14px] font-semibold text-gold-700"
-                          : "link-sweep text-[14px] text-text-mid transition-colors duration-200 hover:text-gold-700"
+                          ? "text-[14px] font-semibold text-coral-700"
+                          : "link-sweep text-[14px] text-text-mid transition-colors duration-200 hover:text-coral-700"
                       }
                     >
                       {p.title}
@@ -72,7 +72,7 @@ export default async function PolicyPage({
               {policy.sections.map((s, i) => (
                 <section key={s.heading} className="reveal">
                   <h2 className="flex items-baseline gap-4 font-display text-[24px] font-semibold leading-tight text-text">
-                    <span className="tnum text-[11px] tracking-[0.16em] text-gold-600">
+                    <span className="tnum text-[11px] tracking-[0.16em] text-coral-700">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {s.heading}
@@ -93,14 +93,14 @@ export default async function PolicyPage({
                 Questions about this policy? Call{" "}
                 <a
                   href={site.phoneHref}
-                  className="text-gold-700 underline-offset-4 hover:underline"
+                  className="text-coral-700 underline-offset-4 hover:underline"
                 >
                   {site.phone}
                 </a>{" "}
                 or write to{" "}
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-gold-700 underline-offset-4 hover:underline"
+                  className="text-coral-700 underline-offset-4 hover:underline"
                 >
                   {site.email}
                 </a>

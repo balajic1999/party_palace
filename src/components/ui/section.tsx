@@ -19,7 +19,7 @@ export function Section({
       className={cn(
         size === "tight" ? "py-12 md:py-16" : "py-16 md:py-20",
         tone === "cream" && "bg-cream",
-        tone === "dark" && "bg-ink-900 text-white",
+        tone === "dark" && "bg-plum-900 text-white",
         className,
       )}
     >
@@ -57,7 +57,7 @@ export function SectionHead({
         <p
           className={cn(
             "text-[11px] font-semibold uppercase tracking-[0.2em]",
-            onDark ? "text-gold-400" : "text-gold-700",
+            onDark ? "text-coral-400" : "text-coral-700",
           )}
         >
           {eyebrow}

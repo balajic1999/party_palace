@@ -25,7 +25,7 @@ export function Field({
       >
         <span>
           {label}
-          {required && <span className="ml-1 text-gold-600">*</span>}
+          {required && <span className="ml-1 text-coral-700">*</span>}
         </span>
         {hint && (
           <span className="normal-case tracking-normal text-text-soft">{hint}</span>
@@ -44,11 +44,11 @@ export function Field({
 export const inputClass = cn(
   "h-12 w-full rounded-sm border border-line bg-white px-4 text-[15px] text-text",
   "placeholder:text-text-soft transition-colors duration-200",
-  "hover:border-line focus:border-gold-500 focus:outline-none",
+  "hover:border-line focus:border-coral-500 focus:outline-none",
 );
 
 export const textareaClass = cn(
   "min-h-28 w-full resize-y rounded-sm border border-line bg-white px-4 py-3 text-[15px] text-text",
   "placeholder:text-text-soft transition-colors duration-200",
-  "hover:border-line focus:border-gold-500 focus:outline-none",
+  "hover:border-line focus:border-coral-500 focus:outline-none",
 );

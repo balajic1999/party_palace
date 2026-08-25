@@ -53,21 +53,21 @@ export function TicketStub({
     >
       {/* foil edge */}
       <div
-        className="h-[3px] w-full bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500"
+        className="h-[3px] w-full bg-gradient-to-r from-coral-500 via-coral-300 to-coral-500"
         aria-hidden="true"
       />
 
       <div className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <Crown className="size-5 text-gold-600" />
+            <Crown className="size-5 text-coral-700" />
             <span className="font-display text-[17px] text-text">Party Palace</span>
           </div>
           <div className="text-right">
             <p className="text-[9.5px] uppercase tracking-[0.16em] text-text-soft">
               Booking ref
             </p>
-            <p className="tnum mt-1 text-[15px] font-semibold tracking-[0.06em] text-gold-700">
+            <p className="tnum mt-1 text-[15px] font-semibold tracking-[0.06em] text-coral-700">
               {booking.ref}
             </p>
           </div>
@@ -77,7 +77,7 @@ export function TicketStub({
           {pkg?.name ?? "Private theatre"}
         </h2>
         {booking.screenMessage && (
-          <p className="mt-2 text-[14px] italic text-gold-700/90">
+          <p className="mt-2 text-[14px] italic text-coral-700/90">
             &ldquo;{booking.screenMessage}&rdquo; on the screen
           </p>
         )}
@@ -151,7 +151,7 @@ export function TicketStub({
           </address>
           <a
             href={site.phoneHref}
-            className="tnum mt-1.5 inline-block text-[11.5px] text-gold-700"
+            className="tnum mt-1.5 inline-block text-[11.5px] text-coral-700"
           >
             {site.phone}
           </a>

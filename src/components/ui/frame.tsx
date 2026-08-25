@@ -9,10 +9,10 @@ import { cn, hash } from "@/lib/utils";
  */
 
 const PLATES = [
-  "linear-gradient(160deg, #3a2c1c 0%, #221a12 55%, #14110e 100%)",
-  "linear-gradient(150deg, #3a2320 0%, #241715 58%, #14110e 100%)",
-  "linear-gradient(170deg, #2c2a35 0%, #1c1a20 55%, #14110e 100%)",
-  "linear-gradient(155deg, #33291a 0%, #211b12 50%, #14110e 100%)",
+  "linear-gradient(160deg, #5a2a49 0%, #3d1d33 55%, #2e1526 100%)",
+  "linear-gradient(150deg, #63304a 0%, #42203a 58%, #2e1526 100%)",
+  "linear-gradient(170deg, #47284a 0%, #341c33 55%, #2e1526 100%)",
+  "linear-gradient(155deg, #6b3550 0%, #45213a 50%, #2e1526 100%)",
 ];
 
 export function Frame({
@@ -41,7 +41,7 @@ export function Frame({
   return (
     <div
       className={cn(
-        "isolate overflow-hidden bg-ink-900",
+        "isolate overflow-hidden bg-plum-900",
         fill ? "absolute inset-0" : cn("relative", ratio),
         className,
       )}
@@ -69,18 +69,18 @@ export function Frame({
           >
             <defs>
               <linearGradient id={`sc-${gid}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#f1d79a" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#c79a2e" stopOpacity="0.18" />
+                <stop offset="0%" stopColor="#fbd9c8" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#e8613c" stopOpacity="0.2" />
               </linearGradient>
               <radialGradient id={`gl-${gid}`} cx="50%" cy="34%" r="62%">
-                <stop offset="0%" stopColor="#d9ae45" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#d9ae45" stopOpacity="0" />
+                <stop offset="0%" stopColor="#f2825f" stopOpacity="0.32" />
+                <stop offset="100%" stopColor="#f2825f" stopOpacity="0" />
               </radialGradient>
             </defs>
 
             <rect width="400" height="300" fill={`url(#gl-${gid})`} />
             {/* light thrown from the screen onto the floor */}
-            <path d="M80 148 L320 148 L392 290 L8 290 Z" fill="#d9ae45" opacity="0.06" />
+            <path d="M80 148 L320 148 L392 290 L8 290 Z" fill="#f2825f" opacity="0.07" />
             <rect
               x="80"
               y="44"
@@ -88,11 +88,11 @@ export function Frame({
               height="104"
               rx="3"
               fill={`url(#sc-${gid})`}
-              stroke="#f1d79a"
+              stroke="#fbd9c8"
               strokeOpacity="0.3"
             />
             {/* seat backs */}
-            <g fill="#0d0b09" opacity="0.8">
+            <g fill="#200f1b" opacity="0.8">
               <rect x="36" y="228" width="126" height="80" rx="18" />
               <rect x="238" y="228" width="126" height="80" rx="18" />
             </g>

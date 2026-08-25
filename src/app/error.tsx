@@ -18,7 +18,7 @@ export default function Error({
   return (
     <div className="shell grid min-h-[62vh] place-items-center py-24 text-center">
       <div className="enter-up max-w-md">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-700">Something broke</p>
+        <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-coral-700">Something broke</p>
         <h1 className="mt-6 font-display text-[clamp(2rem,5vw,2.9rem)] font-semibold leading-[1.06]">
           That didn&rsquo;t load properly.
         </h1>
@@ -36,7 +36,7 @@ export default function Error({
         </div>
         <p className="mt-8 text-[13px] text-text-soft">
           Need a slot right now? Call{" "}
-          <a href={site.phoneHref} className="text-gold-700">
+          <a href={site.phoneHref} className="text-coral-700">
             {site.phone}
           </a>
         </p>

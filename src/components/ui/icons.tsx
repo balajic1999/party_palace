@@ -54,7 +54,7 @@ export function Stars({ count = 5 }: { count?: number }) {
   return (
     <p className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: count }, (_, i) => (
-        <Star key={i} className="size-3.5 fill-gold-500 text-gold-500" aria-hidden="true" />
+        <Star key={i} className="size-3.5 fill-coral-500 text-coral-500" aria-hidden="true" />
       ))}
     </p>
   );

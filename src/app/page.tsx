@@ -7,14 +7,14 @@ import { Frame } from "@/components/ui/frame";
 import { HeroMedia } from "@/components/home/hero-media";
 import { Accordion } from "@/components/ui/accordion";
 import { Reveal } from "@/components/ui/reveal";
-import { ExperienceGlyph, ReasonGlyph, Stars } from "@/components/ui/icons";
+import { ExperienceGlyph, ReasonGlyph } from "@/components/ui/icons";
 import { PackageCard } from "@/components/package-card";
+import { ReviewsMarquee } from "@/components/home/reviews-marquee";
 
 import { site, whatsappLink } from "@/content/site";
 import { experiences, reasons } from "@/content/experiences";
 import { packages } from "@/content/packages";
 import { galleryPreview } from "@/content/gallery";
-import { testimonials } from "@/content/testimonials";
 import { faqs } from "@/content/faqs";
 import { formatINR } from "@/lib/utils";
 
@@ -24,12 +24,12 @@ export default function HomePage() {
   return (
     <>
       {/* ── 1 · hero ───────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-ink-900">
+      <section className="relative isolate overflow-hidden bg-plum-900">
         <HeroMedia />
 
         <div className="shell relative py-20 md:py-28 lg:py-32">
           <div className="max-w-xl">
-            <p className="enter-up text-[11px] font-semibold uppercase tracking-[0.24em] text-gold-400">
+            <p className="enter-up text-[11px] font-semibold uppercase tracking-[0.24em] text-coral-400">
               Private theatre &middot; {site.city}
             </p>
 
@@ -38,7 +38,7 @@ export default function HomePage() {
               <br />
               Watch.
               <br />
-              <span className="text-gold-400">Experience.</span>
+              <span className="text-coral-400">Experience.</span>
             </h1>
 
             <p className="enter-up stagger-2 mt-6 max-w-md text-[15.5px] leading-relaxed text-white/75">
@@ -71,9 +71,9 @@ export default function HomePage() {
 
             <a
               href={site.phoneHref}
-              className="enter-up stagger-4 mt-7 inline-flex items-center gap-2 text-[14px] text-white/70 transition-colors duration-200 hover:text-gold-400"
+              className="enter-up stagger-4 mt-7 inline-flex items-center gap-2 text-[14px] text-white/70 transition-colors duration-200 hover:text-coral-400"
             >
-              <Phone strokeWidth={1.8} className="size-4 text-gold-500" />
+              <Phone strokeWidth={1.8} className="size-4 text-coral-500" />
               Call Us: <span className="tnum text-white">{site.phone}</span>
             </a>
           </div>
@@ -93,7 +93,7 @@ export default function HomePage() {
                 href={`/packages/${exp.packageSlug}`}
                 className="lift flex h-full gap-4 rounded-md border border-line bg-white p-5 lg:flex-col lg:gap-3"
               >
-                <span className="grid size-11 shrink-0 place-items-center rounded-sm bg-gold-50 text-gold-600">
+                <span className="grid size-11 shrink-0 place-items-center rounded-sm bg-coral-50 text-coral-700">
                   <ExperienceGlyph name={exp.icon} />
                 </span>
                 <span>
@@ -172,7 +172,7 @@ export default function HomePage() {
         <ul className="mt-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {reasons.map((r, i) => (
             <Reveal key={r.title} delay={i * 0.05} as="li" className="group text-center">
-              <span className="mx-auto grid size-12 place-items-center rounded-full border border-gold-500/40 bg-white text-gold-600 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-gold-500 group-hover:bg-gold-50">
+              <span className="mx-auto grid size-12 place-items-center rounded-full border border-coral-500/40 bg-white text-coral-700 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-coral-500 group-hover:bg-coral-50">
                 <ReasonGlyph name={r.icon} />
               </span>
               <h3 className="mt-4 text-[14.5px] font-bold text-text">{r.title}</h3>
@@ -182,25 +182,22 @@ export default function HomePage() {
         </ul>
       </Section>
 
-      {/* ── 6 · testimonials ───────────────────────────────────── */}
-      <Section>
-        <SectionHead eyebrow="Reviews" title="What our guests say" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.06}>
-              <figure className="lift flex h-full flex-col rounded-md border border-line bg-white p-6">
-                <Stars count={t.rating} />
-                <blockquote className="mt-4 flex-1 text-[14px] leading-relaxed text-text-mid">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-5 font-display text-[15px] font-semibold text-text">
-                  &ndash; {t.name}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+      {/* ── 6 · testimonials ───────────────────────────────────────
+           Full-bleed on purpose: the strip runs edge to edge so it reads as
+           continuing past the screen, which is the whole point of a marquee.
+           `Section` is not used here because it constrains to .shell. */}
+      <section className="overflow-hidden bg-plum-900 py-16 md:py-20">
+        <div className="shell">
+          <SectionHead
+            eyebrow="Reviews"
+            title="What our guests say"
+            tone="light"
+          />
         </div>
-      </Section>
+        <div className="mt-10">
+          <ReviewsMarquee />
+        </div>
+      </section>
 
       {/* ── 7 · faq ────────────────────────────────────────────── */}
       <Section id="faq" tone="cream">
@@ -212,7 +209,7 @@ export default function HomePage() {
       </Section>
 
       {/* closing call to action */}
-      <section className="bg-ink-900">
+      <section className="bg-plum-900">
         <div className="shell flex flex-col items-center gap-6 py-14 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <h2 className="font-display text-[24px] font-semibold leading-tight text-white sm:text-[29px]">

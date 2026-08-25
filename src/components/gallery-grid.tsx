@@ -37,8 +37,8 @@ export function GalleryGrid() {
               "rounded-full border px-4 py-2 text-[10.5px] uppercase tracking-[0.14em]",
               "transition-all duration-300 ease-out-soft",
               tag === t
-                ? "border-gold-500 bg-gold-50 text-gold-700 shadow-card"
-                : "border-line text-text-mid hover:-translate-y-px hover:border-gold-400 hover:text-text",
+                ? "border-coral-500 bg-coral-50 text-coral-700 shadow-card"
+                : "border-line text-text-mid hover:-translate-y-px hover:border-coral-400 hover:text-text",
             )}
           >
             {t}
@@ -67,7 +67,7 @@ export function GalleryGrid() {
             />
             {/* the plate underneath is dark, so the caption reads white */}
             <span
-              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-ink-900/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-plum-900/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               aria-hidden="true"
             />
             <span className="absolute bottom-3 left-3 z-10 translate-y-1 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[9.5px] uppercase tracking-[0.14em] text-white opacity-0 backdrop-blur-sm transition-all duration-300 ease-out-soft group-hover:translate-y-0 group-hover:opacity-100">
