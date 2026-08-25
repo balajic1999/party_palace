@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, ChevronRight, Clock, Users } from "lucide-react";
+import { ArrowRight, Check, Clock, Users } from "lucide-react";
 
 import { Section, SectionHead } from "@/components/ui/section";
+import { Breadcrumb } from "@/components/page-header";
 import { ButtonLink } from "@/components/ui/button";
 import { Frame } from "@/components/ui/frame";
 import { PackageCard } from "@/components/package-card";
@@ -41,41 +41,40 @@ export default async function PackagePage({
   return (
     <>
       {/* header */}
-      <div className="border-b border-line bg-cream">
-        <div className="shell py-10 md:py-14">
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-1.5 text-[12px] text-text-soft">
-              <li>
-                <Link href="/" className="transition-colors hover:text-gold-700">
-                  Home
-                </Link>
-              </li>
-              <ChevronRight strokeWidth={1.5} className="size-3" aria-hidden="true" />
-              <li>
-                <Link href="/#packages" className="transition-colors hover:text-gold-700">
-                  Packages
-                </Link>
-              </li>
-            </ol>
-          </nav>
+      <div className="relative isolate overflow-hidden border-b border-line bg-cream">
+        <div className="beam -right-[8%] -top-[120%] h-[340px] w-[560px]" aria-hidden="true" />
+
+        <div className="shell relative py-10 md:py-14">
+          <Breadcrumb
+            crumbs={[
+              { href: "/", label: "Home" },
+              { href: "/#packages", label: "Packages" },
+            ]}
+            className="mb-6"
+          />
 
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-7">
+            <div className="enter-scale lg:col-span-7">
               <Frame
                 src={pkg.image}
                 alt={pkg.name}
                 seed={pkg.seed}
                 label={pkg.name.replace(" Package", "")}
                 ratio="aspect-[16/9]"
-                className="rounded-md"
+                className="rounded-md shadow-lift"
               />
             </div>
 
-            <div className="lg:col-span-5">
-              <h1 className="text-[clamp(1.9rem,4.6vw,2.5rem)] font-bold leading-tight">
+            <div className="enter-up stagger-1 lg:col-span-5">
+              {/* short label only — the tagline is a full sentence and wraps
+                  to two lines at this tracking */}
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
+                Package
+              </p>
+              <h1 className="mt-2.5 font-display text-[clamp(1.9rem,4.6vw,2.6rem)] font-semibold leading-[1.12]">
                 {pkg.name}
               </h1>
-              <p className="mt-3 text-[15px] leading-relaxed text-text-mid">
+              <p className="mt-4 text-[15px] leading-relaxed text-text-mid">
                 {pkg.blurb}
               </p>
 
@@ -131,7 +130,9 @@ export default async function PackagePage({
       <Section size="tight">
         <div className="grid gap-10 md:grid-cols-12 md:gap-12">
           <div className="md:col-span-5">
-            <h2 className="text-[20px] font-bold">What&rsquo;s included</h2>
+            <h2 className="font-display text-[24px] font-semibold leading-tight">
+              What&rsquo;s included
+            </h2>
             <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-text-mid">
               Everything below is part of the {formatINR(pkg.price)} price. Nothing
               appears on your bill that isn&rsquo;t listed here or chosen by you.
@@ -151,13 +152,17 @@ export default async function PackagePage({
       {/* optional extras */}
       <Section size="tight" tone="cream">
         <SectionHead
-          title="Optional Extras"
+          eyebrow="Extras"
+          title="Add a little more"
           lede="Add any of these while booking, or decide on the day."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {addOnGroups.map((group) => (
-            <div key={group.id} className="rounded-md border border-line bg-white p-5">
-              <h3 className="text-[16px] font-bold">{group.name}</h3>
+            <div
+              key={group.id}
+              className="reveal rounded-md border border-line bg-white p-5 shadow-card"
+            >
+              <h3 className="font-display text-[19px] font-semibold leading-tight">{group.name}</h3>
               <ul className="mt-4 divide-y divide-line border-y border-line">
                 {group.items.map((item) => (
                   <li
@@ -178,7 +183,7 @@ export default async function PackagePage({
 
       {/* other packages */}
       <Section size="tight">
-        <SectionHead title="Other Packages" />
+        <SectionHead eyebrow="Also available" title="The other two packages" />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {others.map((p) => (
             <PackageCard key={p.slug} pkg={p} />

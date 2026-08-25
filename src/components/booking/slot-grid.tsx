@@ -54,18 +54,18 @@ export function SlotGrid({
             onClick={() => onChange(slot.id)}
             className={cn(
               "group flex items-center justify-between gap-4 rounded-sm border px-4 py-3.5 text-left",
-              "transition-colors duration-300 ease-out-soft",
+              "transition-all duration-300 ease-out-soft",
               selected
-                ? "border-gold-500 bg-gold-50"
+                ? "border-gold-500 bg-gold-50 shadow-card"
                 : bookable
-                  ? "border-line hover:border-line hover:bg-white"
+                  ? "border-line bg-white hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-card"
                   : "cursor-not-allowed border-line opacity-45",
             )}
           >
             <span className="min-w-0">
               <span
                 className={cn(
-                  "tnum block text-[13.5px]",
+                  "tnum block text-[14px] font-medium",
                   selected ? "text-gold-700" : "text-text",
                 )}
               >

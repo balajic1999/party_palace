@@ -28,36 +28,58 @@ export function Section({
   );
 }
 
-/** Centred uppercase title with the gold diamond rule underneath. */
+/**
+ * Centred section heading.
+ *
+ * Three parts, in this order: a small uppercase eyebrow in the UI face, the
+ * title in the display face, then the gold diamond rule. The eyebrow carries
+ * the "where am I" job that the title used to do by shouting in uppercase,
+ * which frees the title to be read at a comfortable size and mixed case.
+ */
 export function SectionHead({
+  eyebrow,
   title,
   lede,
   tone = "dark",
   className,
 }: {
+  eyebrow?: string;
   title: string;
   lede?: string;
   tone?: "dark" | "light";
   className?: string;
 }) {
+  const onDark = tone === "light";
+
   return (
     <div className={cn("text-center", className)}>
+      {eyebrow && (
+        <p
+          className={cn(
+            "text-[11px] font-semibold uppercase tracking-[0.2em]",
+            onDark ? "text-gold-400" : "text-gold-700",
+          )}
+        >
+          {eyebrow}
+        </p>
+      )}
       <h2
         className={cn(
-          "text-[19px] font-bold uppercase tracking-[0.14em] sm:text-[22px]",
-          tone === "dark" ? "text-text" : "text-white",
+          "font-display text-[clamp(1.6rem,3.4vw,2.15rem)] font-semibold leading-[1.15]",
+          eyebrow && "mt-2.5",
+          onDark ? "text-white" : "text-text",
         )}
       >
         {title}
       </h2>
-      <span className="rule-ornament mt-3" aria-hidden="true">
+      <span className="rule-ornament mt-4" aria-hidden="true">
         <span />
       </span>
       {lede && (
         <p
           className={cn(
-            "mx-auto mt-4 max-w-xl text-pretty text-[14.5px] leading-relaxed",
-            tone === "dark" ? "text-text-mid" : "text-white/70",
+            "mx-auto mt-5 max-w-xl text-pretty text-[14.5px] leading-relaxed",
+            onDark ? "text-white/70" : "text-text-mid",
           )}
         >
           {lede}

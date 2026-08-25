@@ -3,6 +3,10 @@
 /* ============================================================
    Party Palace — light "celebrate in style" theme
    White canvas, warm cream bands, gold accent, dark footer.
+
+   Two type roles and only two:
+     display (Playfair) — headings, the ticket, the logo
+     sans    (Inter)    — everything else, including all numbers
    ============================================================ */
 
 @theme {
@@ -11,17 +15,21 @@
   --color-cream: #faf7f1;
   --color-cream-deep: #f4efe4;
   --color-line: #e9e3d9;
+  --color-line-soft: #f1ece3;
 
   /* --- dark surfaces: hero overlay, footer, top bar --- */
   --color-ink-900: #14110e;
   --color-ink-800: #221e1a;
   --color-ink-700: #35302a;
+  --color-ink-600: #4a443c;
 
   /* --- gold ramp. 700 is the only one safe for small text on white. --- */
   --color-gold-700: #8a6614;
   --color-gold-600: #a8801f;
   --color-gold-500: #c79a2e;
   --color-gold-400: #d9ae45;
+  --color-gold-300: #e7c877;
+  --color-gold-200: #efdca8;
   --color-gold-100: #f6e9c9;
   --color-gold-50: #fbf4e4;
 
@@ -43,24 +51,38 @@
   --radius-md: 10px;
   --radius-lg: 16px;
 
+  /* Warm shadows, not grey ones — a neutral shadow over cream reads dirty. */
+  --shadow-card: 0 1px 2px rgb(28 25 23 / 0.04);
+  --shadow-lift: 0 14px 30px -16px rgb(28 25 23 / 0.24);
+  --shadow-bar: 0 10px 24px -22px rgb(28 25 23 / 0.45);
+
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @layer base {
   :root {
     color-scheme: light;
     --page-x: 1.25rem;
+    /* One source of truth for the fixed header height. Anything that has to
+       clear it — scroll anchors, sticky rails — reads these. */
+    --header-h: 70px;
+    --sticky-top: 86px;
   }
 
   @media (min-width: 768px) {
-    :root { --page-x: 2rem; }
+    :root {
+      --page-x: 2rem;
+      --header-h: 114px;
+      --sticky-top: 130px;
+    }
   }
 
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
     /* anchor nav must clear the fixed header */
-    scroll-padding-top: 118px;
+    scroll-padding-top: calc(var(--header-h) + 16px);
   }
 
   body {
@@ -69,6 +91,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+  }
+
+  /* Playfair sets wide by default; headings want it a shade tighter. */
+  .font-display {
+    letter-spacing: -0.005em;
   }
 
   ::selection {
@@ -102,7 +129,7 @@
     padding-inline: var(--page-x);
   }
 
-  /* Section label: uppercase, centred, gold diamond rule underneath. */
+  /* Section label ornament: gold rule with a diamond in the middle. */
   .rule-ornament {
     position: relative;
     display: block;
@@ -133,6 +160,9 @@
     transform: rotate(45deg);
   }
 
+  /* Left-aligned variant, for page headers where centring would be wrong. */
+  .rule-ornament.is-start { margin-inline: 0; }
+
   /* Card lift used by experience / package / gallery tiles */
   .lift {
     transition:
@@ -142,7 +172,127 @@
   }
   .lift:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px -14px rgb(28 25 23 / 0.22);
+    box-shadow: var(--shadow-lift);
     border-color: var(--color-gold-400);
+  }
+  .lift:active {
+    transform: translateY(-1px);
+  }
+
+  /* Underline that draws in from the left. Nav and footer links. */
+  .link-sweep {
+    position: relative;
+  }
+  .link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 280ms var(--ease-out-soft);
+  }
+  .link-sweep:hover::after,
+  .link-sweep[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Perforation between the ticket body and its stub. */
+  .tear {
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      var(--color-line) 0 6px,
+      transparent 6px 12px
+    );
+    background-size: 12px 1px;
+    background-repeat: repeat-x;
+  }
+
+  /* Soft warm glow. Decoration only — never sits behind body text. */
+  .beam {
+    position: absolute;
+    pointer-events: none;
+    background: radial-gradient(
+      closest-side,
+      rgb(199 154 46 / 0.16),
+      rgb(199 154 46 / 0.05) 55%,
+      transparent 78%
+    );
+  }
+}
+
+/* ============================================================
+   Motion
+   ------------------------------------------------------------
+   All of it is CSS, on purpose. An entrance that starts at
+   opacity 0 must not depend on a JS driver ticking — a background
+   tab, a throttled rAF or a thrown error would leave the content
+   invisible. CSS keyframes always resolve, and the scroll reveal
+   sits behind @supports so an unsupported browser gets the
+   finished state rather than a blank one.
+
+   One rule of thumb worth keeping: never fade an element that
+   wraps a `position: fixed` child. A `both`-filled keyframe keeps
+   a stacking context alive long after the opacity is back to 1,
+   and a transition holds one while it runs — either way the
+   overlay ends up behind the fixed header. Animate the headings
+   and panels, not their container.
+   ============================================================ */
+
+@keyframes pp-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pp-slide-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pp-scale-in {
+  from { opacity: 0; transform: scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pp-drawer-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* There is no whole-page entrance class here on purpose. Fading `main` as a
+     unit makes it a stacking context, which drops the fixed overlays living
+     inside it — the gallery lightbox, the wizard's mobile bar — underneath the
+     fixed header. Pages open with these per-element entrances instead, applied
+     to headings and panels that have no fixed children. */
+
+  /* Content that moves as well as fades. Safe anywhere with no fixed child. */
+  .enter-up    { animation: pp-fade-up 480ms var(--ease-out-soft) both; }
+  .enter-scale { animation: pp-scale-in 420ms var(--ease-out-soft) both; }
+  .enter-side  { animation: pp-slide-in 380ms var(--ease-out-soft) both; }
+  .drawer-in   { animation: pp-drawer-in 220ms var(--ease-out-soft) both; }
+
+  /* Stagger helpers — cheaper and steadier than per-item inline delays. */
+  .stagger-1 { animation-delay: 60ms; }
+  .stagger-2 { animation-delay: 120ms; }
+  .stagger-3 { animation-delay: 180ms; }
+  .stagger-4 { animation-delay: 240ms; }
+}
+
+/* Scroll-driven reveal: no observer, no JS, no delay bookkeeping.
+   Browsers without support skip the block and the content is simply
+   already visible — the failure mode is "no animation", never
+   "no content". */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: pp-fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 26%;
+    }
   }
 }

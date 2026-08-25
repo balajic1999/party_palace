@@ -21,14 +21,21 @@ export function SummaryRail({
   const slot = slotById(draft.slot);
 
   return (
-    <div className={cn("rounded-md border border-line bg-cream p-5 sm:p-6", className)}>
-      <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-gold-700">
+    <div
+      className={cn(
+        "rounded-md border border-line bg-cream p-5 sm:p-6 shadow-card",
+        className,
+      )}
+    >
+      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold-700">
         Your booking
       </p>
 
       {pkg ? (
         <>
-          <h2 className="mt-2.5 text-[20px] font-bold text-text">{pkg.name}</h2>
+          <h2 className="mt-2.5 font-display text-[22px] font-semibold leading-tight text-text">
+            {pkg.name}
+          </h2>
 
           <ul className="mt-3 space-y-2 text-[13px] text-text-mid">
             {draft.date && (
@@ -93,7 +100,7 @@ export function SummaryRail({
             <div className="flex items-baseline justify-between gap-4">
               <span className="text-[14px] font-semibold text-text">Total</span>
               <span
-                className="tnum text-[24px] font-bold leading-none text-text"
+                className="tnum text-[26px] font-semibold leading-none text-text transition-colors duration-200"
                 aria-live="polite"
               >
                 {formatINR(quote.total)}

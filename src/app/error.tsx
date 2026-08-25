@@ -17,9 +17,9 @@ export default function Error({
 
   return (
     <div className="shell grid min-h-[62vh] place-items-center py-24 text-center">
-      <div className="max-w-md">
+      <div className="enter-up max-w-md">
         <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-gold-700">Something broke</p>
-        <h1 className="mt-6 text-[clamp(2rem,5vw,2.9rem)] leading-[1.06]">
+        <h1 className="mt-6 font-display text-[clamp(2rem,5vw,2.9rem)] font-semibold leading-[1.06]">
           That didn&rsquo;t load properly.
         </h1>
         <p className="mt-4 text-[15px] leading-relaxed text-text-mid">

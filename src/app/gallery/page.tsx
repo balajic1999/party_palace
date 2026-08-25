@@ -14,7 +14,8 @@ export default function GalleryPage() {
   return (
     <>
       <PageHeader
-        title="Gallery"
+        eyebrow="Gallery"
+        title="Inside the room"
         lede="Decor setups, celebrations and the theatre itself. Tap any photo to open it full size."
         crumbs={[{ href: "/", label: "Home" }]}
       />

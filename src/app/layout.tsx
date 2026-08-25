@@ -82,8 +82,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Header />
-        {/* clears the fixed header: 70px bar on mobile, + 36px utility strip from md */}
-        <main id="main" className="pt-[70px] md:pt-[114px]">
+        {/* clears the fixed header: 70px bar on mobile, + 36px utility strip
+            from md. --header-h in globals.css holds the same two numbers, and
+            anything else that has to clear the bar reads them from there. */}
+        {/* No entrance animation wraps this element, deliberately. A page-level
+            opacity wrapper drops every fixed overlay inside the page (the
+            gallery lightbox, the booking wizard's mobile bar) behind the fixed
+            header, because both a filling keyframe and a running transition
+            make the wrapper a stacking context. Page entrances are applied per
+            element instead — see .enter-up in globals.css. */}
+        <main id="main" className="pt-[var(--header-h)]">
           {children}
         </main>
         <Footer />

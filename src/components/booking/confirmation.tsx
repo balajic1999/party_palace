@@ -74,7 +74,7 @@ export function Confirmation({ reference }: { reference: string }) {
   if (booking === undefined) {
     return (
       <div className="shell py-24 text-center">
-        <Loader2 className="mx-auto size-5 animate-spin text-text-soft" />
+        <Loader2 className="mx-auto size-5 animate-spin text-gold-600" />
         <span className="sr-only">Loading your booking…</span>
       </div>
     );
@@ -83,7 +83,7 @@ export function Confirmation({ reference }: { reference: string }) {
   if (!booking) {
     return (
       <div className="shell py-24 text-center">
-        <h1 className="text-[28px] leading-tight">
+        <h1 className="font-display text-[30px] font-semibold leading-tight">
           We can&rsquo;t find booking {reference}.
         </h1>
         <p className="mx-auto mt-3 max-w-md text-[14.5px] leading-relaxed text-text-mid">
@@ -124,13 +124,16 @@ export function Confirmation({ reference }: { reference: string }) {
 
   return (
     <div className="shell py-12 md:py-16">
-      {/* Deliberately NOT animated in.
-          This is the payoff screen — the booking someone just paid for. An
-          opacity-0 entrance would leave it blank whenever the animation driver
-          doesn't tick (opened in a background tab, throttled rAF, JS error).
-          Critical content renders statically; motion is for decoration only. */}
-      <div>
-        <div className="flex items-center gap-3">
+      {/* The entrance below is CSS keyframes, never a JS driver.
+          This is the payoff screen — the booking someone just paid for — so an
+          opacity-0 start is only acceptable because a CSS animation always
+          resolves on its own. A JS-driven one does not: a background tab, a
+          throttled rAF or a thrown error would leave the ticket blank. Reduced
+          motion skips the rule entirely and the content is simply there. */}
+      <div className="relative isolate">
+        <div className="beam -left-[14%] -top-[70%] h-[320px] w-[520px]" aria-hidden="true" />
+
+        <div className="enter-scale relative flex items-center gap-3">
           <span className="grid size-9 place-items-center rounded-full border border-ok/40 bg-ok/10 text-ok">
             <Check strokeWidth={2} className="size-4" />
           </span>
@@ -139,13 +142,13 @@ export function Confirmation({ reference }: { reference: string }) {
           </p>
         </div>
 
-        <h1 className="mt-6 max-w-2xl text-balance text-[clamp(2rem,5vw,3rem)] leading-[1.05]">
+        <h1 className="enter-up stagger-1 relative mt-6 max-w-2xl text-balance font-display text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1.05]">
           {/* phrased to stay grammatical whether the celebrant is one name or two */}
           {booking.celebrant
             ? `Now to keep it from ${booking.celebrant}.`
             : "That's yours now."}
         </h1>
-        <p className="mt-4 max-w-lg text-[15.5px] leading-relaxed text-text-mid">
+        <p className="enter-up stagger-2 relative mt-4 max-w-lg text-[15.5px] leading-relaxed text-text-mid">
           We&rsquo;ve got it in the book. You&rsquo;ll get a WhatsApp confirmation on{" "}
           <span className="tnum text-text">{booking.phone}</span> shortly
           — keep your reference handy.
@@ -153,13 +156,13 @@ export function Confirmation({ reference }: { reference: string }) {
       </div>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-8">
+        <div className="enter-up stagger-3 lg:col-span-8">
           <TicketStub booking={booking} />
         </div>
 
-        <div className="lg:col-span-4">
-          <div className="rounded-md border border-line p-6">
-            <p className="text-[10.5px] uppercase tracking-[0.18em] text-gold-600">
+        <div className="enter-up stagger-4 lg:col-span-4">
+          <div className="rounded-md border border-line bg-cream p-6">
+            <p className="text-[10.5px] uppercase tracking-[0.18em] text-gold-700">
               Before you go
             </p>
 
@@ -212,7 +215,7 @@ export function Confirmation({ reference }: { reference: string }) {
 
             <Link
               href="/my-bookings"
-              className="mt-6 inline-block text-[13.5px] text-gold-700 underline-offset-4 hover:underline print:hidden"
+              className="link-sweep mt-6 inline-block text-[13.5px] text-gold-700 print:hidden"
             >
               See all my bookings
             </Link>

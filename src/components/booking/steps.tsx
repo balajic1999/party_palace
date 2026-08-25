@@ -43,10 +43,11 @@ export function StepPackage({ draft, set }: StepProps) {
                 })
               }
               className={cn(
-                "flex gap-4 rounded-md border p-3 text-left transition-colors duration-200 sm:gap-5 sm:p-4",
+                "flex gap-4 rounded-md border p-3 text-left sm:gap-5 sm:p-4",
+                "transition-all duration-300 ease-out-soft",
                 selected
-                  ? "border-gold-500 bg-gold-50"
-                  : "border-line bg-white hover:border-gold-400",
+                  ? "border-gold-500 bg-gold-50 shadow-card"
+                  : "border-line bg-white hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-lift",
               )}
             >
               <Frame
@@ -58,10 +59,13 @@ export function StepPackage({ draft, set }: StepProps) {
 
               <span className="min-w-0 flex-1">
                 <span className="flex items-start justify-between gap-3">
-                  <span className="text-[17px] font-bold text-text">{p.name}</span>
+                  <span className="font-display text-[19px] font-semibold leading-tight text-text">
+                    {p.name}
+                  </span>
                   <span
                     className={cn(
                       "mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border",
+                      "transition-colors duration-200",
                       selected ? "border-gold-500 bg-gold-500" : "border-line",
                     )}
                     aria-hidden="true"
@@ -94,7 +98,7 @@ export function StepPackage({ draft, set }: StepProps) {
         <div className="rounded-md border border-line bg-white p-5">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-[15px] font-semibold text-text">How many of you?</p>
+              <p className="font-display text-[18px] font-semibold text-text">How many of you?</p>
               <p className="mt-1 text-[13px] text-text-mid">
                 {formatINR(current.price)} covers {current.baseGuests} guests. Each
                 extra guest is {formatINR(current.extraGuestPrice)}.
@@ -210,7 +214,7 @@ export function StepExtras({ draft, set }: StepProps) {
                 }}
                 aria-hidden="true"
               />
-              <p className="relative text-balance text-center font-display text-[clamp(1rem,3.2vw,1.5rem)] leading-tight text-gold-400">
+              <p className="relative text-balance text-center font-display text-[clamp(1rem,3.2vw,1.5rem)] leading-tight text-gold-300 transition-opacity duration-300">
                 {draft.screenMessage ||
                   (draft.celebrant
                     ? `Happy celebrations, ${draft.celebrant}!`
@@ -226,7 +230,9 @@ export function StepExtras({ draft, set }: StepProps) {
 
       {addOnGroups.map((group) => (
         <section key={group.id}>
-          <h3 className="text-[17px] font-bold text-text">{group.name}</h3>
+          <h3 className="font-display text-[20px] font-semibold leading-tight text-text">
+            {group.name}
+          </h3>
           <p className="mt-1.5 max-w-2xl text-[13px] leading-relaxed text-text-mid">
             {group.blurb}
           </p>
@@ -240,8 +246,11 @@ export function StepExtras({ draft, set }: StepProps) {
                 <div
                   key={item.id}
                   className={cn(
-                    "flex items-center justify-between gap-4 rounded-sm border px-4 py-3 transition-colors duration-200",
-                    selected ? "border-gold-500 bg-gold-50" : "border-line bg-white",
+                    "flex items-center justify-between gap-4 rounded-sm border px-4 py-3",
+                    "transition-colors duration-200",
+                    selected
+                      ? "border-gold-500 bg-gold-50"
+                      : "border-line bg-white hover:border-gold-400",
                   )}
                 >
                   <button
@@ -254,6 +263,7 @@ export function StepExtras({ draft, set }: StepProps) {
                     <span
                       className={cn(
                         "mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-[4px] border",
+                        "transition-colors duration-200",
                         selected ? "border-gold-500 bg-gold-500" : "border-line",
                       )}
                       aria-hidden="true"

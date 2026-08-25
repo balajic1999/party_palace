@@ -6,14 +6,16 @@ type Size = "sm" | "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-sm font-semibold " +
-  "transition-[background-color,border-color,color] duration-250 ease-out-soft " +
+  "transition-[background-color,border-color,color,box-shadow,transform] duration-250 ease-out-soft " +
   "disabled:pointer-events-none disabled:opacity-45 active:translate-y-px whitespace-nowrap";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-gold-500 text-ink-900 hover:bg-gold-400",
+  // The lift is small on purpose: the gold is already loud enough at this size.
+  primary:
+    "bg-gold-500 text-ink-900 shadow-card hover:bg-gold-400 hover:shadow-lift hover:-translate-y-px",
   outline:
-    "border border-line bg-white text-text hover:border-gold-500 hover:text-gold-700",
-  dark: "bg-ink-900 text-white hover:bg-ink-800",
+    "border border-line bg-white text-text hover:border-gold-500 hover:text-gold-700 hover:shadow-card",
+  dark: "bg-ink-900 text-white hover:bg-ink-800 hover:shadow-lift hover:-translate-y-px",
   ghost: "text-text hover:bg-cream",
   // for use on the dark hero / footer
   onDark: "border border-white/35 text-white hover:border-white hover:bg-white/10",

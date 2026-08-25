@@ -26,7 +26,9 @@ export function Footer() {
     <>
       {/* Quick contact — phone only, matching the mobile layout */}
       <section className="bg-ink-800 py-8 sm:hidden" aria-label="Quick contact">
-        <h2 className="text-center text-[15px] font-semibold text-white">Quick Contact</h2>
+        <h2 className="text-center font-display text-[18px] font-semibold text-white">
+          Quick Contact
+        </h2>
         <div className="mt-5 flex items-start justify-center gap-10">
           <QuickAction href={site.phoneHref} label="Call Us">
             <Phone strokeWidth={1.6} className="size-[18px]" />
@@ -166,12 +168,18 @@ export function Footer() {
             </p>
             <ul className="flex gap-6">
               <li>
-                <Link href="/policies/privacy" className="transition-colors hover:text-white">
+                <Link
+                  href="/policies/privacy"
+                  className="link-sweep transition-colors duration-200 hover:text-white"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/policies/terms" className="transition-colors hover:text-white">
+                <Link
+                  href="/policies/terms"
+                  className="link-sweep transition-colors duration-200 hover:text-white"
+                >
                   Terms &amp; Conditions
                 </Link>
               </li>
@@ -198,9 +206,9 @@ function QuickAction({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="flex w-20 flex-col items-center gap-2 text-center"
+      className="group flex w-20 flex-col items-center gap-2 text-center"
     >
-      <span className="grid size-12 place-items-center rounded-full border border-gold-500/50 bg-white/5 text-gold-400">
+      <span className="grid size-12 place-items-center rounded-full border border-gold-500/50 bg-white/5 text-gold-400 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-gold-400 group-hover:bg-white/10">
         {children}
       </span>
       <span className="text-[12px] text-white/70">{label}</span>
@@ -220,7 +228,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="text-[13.5px] text-white/60 transition-colors duration-200 hover:text-gold-400"
+      className="link-sweep text-[13.5px] text-white/60 transition-colors duration-200 hover:text-gold-400"
     >
       {children}
     </Link>
@@ -269,7 +277,7 @@ function Social({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="grid size-9 place-items-center rounded-full border border-white/20 text-white/70 transition-colors duration-200 hover:border-gold-500 hover:text-gold-400"
+      className="grid size-9 place-items-center rounded-full border border-white/20 text-white/70 transition-all duration-300 ease-out-soft hover:-translate-y-0.5 hover:border-gold-500 hover:bg-white/5 hover:text-gold-400"
     >
       {children}
     </a>

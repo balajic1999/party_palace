@@ -29,20 +29,24 @@ export default function HomePage() {
 
         <div className="shell relative py-20 md:py-28 lg:py-32">
           <div className="max-w-xl">
-            <h1 className="text-[clamp(2.4rem,7vw,3.6rem)] font-bold leading-[1.06] text-white">
+            <p className="enter-up text-[11px] font-semibold uppercase tracking-[0.24em] text-gold-400">
+              Private theatre &middot; {site.city}
+            </p>
+
+            <h1 className="enter-up stagger-1 mt-5 font-display text-[clamp(2.4rem,7vw,3.6rem)] font-semibold leading-[1.06] text-white">
               Celebrate.
               <br />
               Watch.
               <br />
-              <span className="text-gold-500">Experience.</span>
+              <span className="text-gold-400">Experience.</span>
             </h1>
 
-            <p className="mt-6 max-w-md text-[15.5px] leading-relaxed text-white/75">
+            <p className="enter-up stagger-2 mt-6 max-w-md text-[15.5px] leading-relaxed text-white/75">
               Private theatre experiences in {site.city} that make every moment
               special.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="enter-up stagger-3 mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/book" size="lg" className="group">
                 <CalendarCheck strokeWidth={1.8} className="size-[18px]" />
                 Book Your Experience
@@ -67,7 +71,7 @@ export default function HomePage() {
 
             <a
               href={site.phoneHref}
-              className="mt-7 inline-flex items-center gap-2 text-[14px] text-white/70 transition-colors hover:text-gold-400"
+              className="enter-up stagger-4 mt-7 inline-flex items-center gap-2 text-[14px] text-white/70 transition-colors duration-200 hover:text-gold-400"
             >
               <Phone strokeWidth={1.8} className="size-4 text-gold-500" />
               Call Us: <span className="tnum text-white">{site.phone}</span>
@@ -78,7 +82,10 @@ export default function HomePage() {
 
       {/* ── 2 · experiences ────────────────────────────────────── */}
       <Section id="experiences">
-        <SectionHead title="Our Experiences" />
+        <SectionHead
+          eyebrow="What we do"
+          title="Choose your kind of celebration"
+        />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {experiences.map((exp, i) => (
             <Reveal key={exp.slug} delay={i * 0.05}>
@@ -103,7 +110,10 @@ export default function HomePage() {
 
       {/* ── 3 · packages ───────────────────────────────────────── */}
       <Section id="packages" tone="cream">
-        <SectionHead title="Popular Packages" />
+        <SectionHead
+          eyebrow="Packages"
+          title="Priced up front, nothing hidden"
+        />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.slug} delay={i * 0.06} className="h-full">
@@ -121,7 +131,7 @@ export default function HomePage() {
 
       {/* ── 4 · gallery preview ────────────────────────────────── */}
       <Section id="gallery">
-        <SectionHead title="Gallery" />
+        <SectionHead eyebrow="Gallery" title="Inside the room" />
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {galleryPreview.map((item, i) => (
             <Reveal
@@ -131,7 +141,7 @@ export default function HomePage() {
             >
               <Link
                 href="/gallery"
-                className="lift block overflow-hidden rounded-md border border-line"
+                className="lift group block overflow-hidden rounded-md border border-line"
                 aria-label={`Gallery — ${item.alt}`}
               >
                 <Frame
@@ -139,6 +149,7 @@ export default function HomePage() {
                   alt={item.alt}
                   seed={item.seed}
                   ratio="aspect-[4/3]"
+                  className="transition-transform duration-[600ms] ease-out-soft group-hover:scale-[1.04]"
                 />
               </Link>
             </Reveal>
@@ -154,13 +165,14 @@ export default function HomePage() {
       {/* ── 5 · why choose us (also the About Us anchor) ───────── */}
       <Section id="about" tone="cream">
         <SectionHead
-          title="Why Choose Party Palace?"
+          eyebrow="Why us"
+          title="Why people book with Party Palace"
           lede="Tirupati's premium destination for private theatre experiences and unforgettable celebrations."
         />
         <ul className="mt-10 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {reasons.map((r, i) => (
-            <Reveal key={r.title} delay={i * 0.05} as="li" className="text-center">
-              <span className="mx-auto grid size-12 place-items-center rounded-full border border-gold-500/40 bg-white text-gold-600">
+            <Reveal key={r.title} delay={i * 0.05} as="li" className="group text-center">
+              <span className="mx-auto grid size-12 place-items-center rounded-full border border-gold-500/40 bg-white text-gold-600 transition-all duration-300 ease-out-soft group-hover:-translate-y-0.5 group-hover:border-gold-500 group-hover:bg-gold-50">
                 <ReasonGlyph name={r.icon} />
               </span>
               <h3 className="mt-4 text-[14.5px] font-bold text-text">{r.title}</h3>
@@ -172,16 +184,16 @@ export default function HomePage() {
 
       {/* ── 6 · testimonials ───────────────────────────────────── */}
       <Section>
-        <SectionHead title="What Our Clients Say" />
+        <SectionHead eyebrow="Reviews" title="What our guests say" />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.06}>
-              <figure className="flex h-full flex-col rounded-md border border-line bg-white p-6">
+              <figure className="lift flex h-full flex-col rounded-md border border-line bg-white p-6">
                 <Stars count={t.rating} />
                 <blockquote className="mt-4 flex-1 text-[14px] leading-relaxed text-text-mid">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-5 text-[13.5px] font-semibold text-text">
+                <figcaption className="mt-5 font-display text-[15px] font-semibold text-text">
                   &ndash; {t.name}
                 </figcaption>
               </figure>
@@ -192,7 +204,7 @@ export default function HomePage() {
 
       {/* ── 7 · faq ────────────────────────────────────────────── */}
       <Section id="faq" tone="cream">
-        <SectionHead title="Frequently Asked Questions" />
+        <SectionHead eyebrow="FAQ" title="Questions we get asked" />
         <div className="mt-10 grid gap-3 md:grid-cols-2 md:gap-5">
           <Accordion items={faqs.slice(0, half)} />
           <Accordion items={faqs.slice(half)} />
@@ -203,7 +215,7 @@ export default function HomePage() {
       <section className="bg-ink-900">
         <div className="shell flex flex-col items-center gap-6 py-14 text-center md:flex-row md:justify-between md:text-left">
           <div>
-            <h2 className="text-[22px] font-bold text-white sm:text-[26px]">
+            <h2 className="font-display text-[24px] font-semibold leading-tight text-white sm:text-[29px]">
               Ready to plan your celebration?
             </h2>
             <p className="mt-2 text-[14px] text-white/65">

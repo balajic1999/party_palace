@@ -47,7 +47,7 @@ export function TicketStub({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-md border border-line bg-white",
+        "relative overflow-hidden rounded-md border border-line bg-white shadow-card",
         className,
       )}
     >
@@ -67,13 +67,13 @@ export function TicketStub({
             <p className="text-[9.5px] uppercase tracking-[0.16em] text-text-soft">
               Booking ref
             </p>
-            <p className="tnum mt-1 text-[15px] tracking-[0.06em] text-gold-700">
+            <p className="tnum mt-1 text-[15px] font-semibold tracking-[0.06em] text-gold-700">
               {booking.ref}
             </p>
           </div>
         </div>
 
-        <h2 className="mt-7 text-[clamp(1.9rem,5vw,2.6rem)] leading-none text-text">
+        <h2 className="mt-7 font-display text-[clamp(1.9rem,5vw,2.6rem)] font-semibold leading-[1.08] text-text">
           {pkg?.name ?? "Private theatre"}
         </h2>
         {booking.screenMessage && (
@@ -124,7 +124,7 @@ export function TicketStub({
             <p className="text-[9.5px] uppercase tracking-[0.14em] text-text-soft">
               Paid
             </p>
-            <p className="tnum mt-1.5 text-[19px] text-ok">
+            <p className="tnum mt-1.5 text-[19px] font-semibold text-ok">
               {formatINR(booking.amountPaid)}
             </p>
           </div>
@@ -132,7 +132,7 @@ export function TicketStub({
             <p className="text-[9.5px] uppercase tracking-[0.14em] text-text-soft">
               Due at venue
             </p>
-            <p className="tnum mt-1.5 text-[19px] text-text">
+            <p className="tnum mt-1.5 text-[19px] font-semibold text-text">
               {formatINR(booking.balanceDue)}
             </p>
           </div>

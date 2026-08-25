@@ -9,17 +9,18 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
   return (
     <article
       className={cn(
-        "lift flex h-full flex-col overflow-hidden rounded-md border border-line bg-white",
+        "lift group flex h-full flex-col overflow-hidden rounded-md border border-line bg-white",
         className,
       )}
     >
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <Frame
           src={pkg.image}
           alt={pkg.name}
           seed={pkg.seed}
           label={pkg.name.replace(" Package", "")}
           ratio="aspect-[16/9]"
+          className="transition-transform duration-[600ms] ease-out-soft group-hover:scale-[1.04]"
         />
         {pkg.popular && (
           <span className="absolute left-3 top-3 rounded-sm bg-gold-500 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.1em] text-ink-900">
@@ -29,7 +30,9 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-[18px] font-bold text-text">{pkg.name}</h3>
+        <h3 className="font-display text-[20px] font-semibold leading-tight text-text">
+          {pkg.name}
+        </h3>
         {/* fixed height so the price row lines up across all three cards */}
         <p className="mt-1.5 min-h-[2.6em] text-[13.5px] leading-relaxed text-text-mid">
           {pkg.tagline}
@@ -85,7 +88,9 @@ export function PackageCardCompact({ pkg }: { pkg: Package }) {
         ratio="aspect-[16/9]"
       />
       <div className="p-4">
-        <h3 className="text-[17px] font-bold text-text">{pkg.name}</h3>
+        <h3 className="font-display text-[19px] font-semibold leading-tight text-text">
+          {pkg.name}
+        </h3>
         <p className="mt-2 text-[11px] uppercase tracking-[0.12em] text-text-soft">
           Starts from
         </p>

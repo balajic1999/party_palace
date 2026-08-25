@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { ChevronRight, MapPin, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
 import { ButtonLink } from "@/components/ui/button";
 import { site, whatsappLink } from "@/content/site";
@@ -22,6 +22,7 @@ const NAV = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   // Close the drawer on navigation. Adjusting state during render (React's
@@ -43,6 +44,15 @@ export function Header() {
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
+
+  // Lift the bar off the page once it stops sitting on the hero. Passive
+  // listener, one boolean — cheap enough to run on every scroll frame.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Highlight whichever section is currently in view.
   useEffect(() => {
@@ -111,7 +121,12 @@ export function Header() {
       </div>
 
       {/* main bar */}
-      <div className="border-b border-line bg-white/95 backdrop-blur">
+      <div
+        className={cn(
+          "border-b bg-white/95 backdrop-blur transition-[box-shadow,border-color] duration-300 ease-out-soft",
+          scrolled ? "border-line shadow-bar" : "border-transparent",
+        )}
+      >
         <div className="shell flex h-[70px] items-center justify-between gap-6 md:h-[78px]">
           <Logo />
 
@@ -122,7 +137,7 @@ export function Header() {
                 href={item.href}
                 aria-current={isActive(item) ? "page" : undefined}
                 className={cn(
-                  "text-[14px] transition-colors duration-200",
+                  "link-sweep text-[14px] transition-colors duration-200",
                   isActive(item)
                     ? "font-semibold text-gold-700"
                     : "text-text-mid hover:text-gold-700",
@@ -142,12 +157,12 @@ export function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              className="grid size-10 place-items-center rounded-sm border border-line text-text transition-colors hover:border-gold-500 lg:hidden"
+              className="grid size-10 place-items-center rounded-sm border border-line text-text transition-colors duration-200 hover:border-gold-500 hover:text-gold-700 lg:hidden"
             >
               {open ? (
-                <X strokeWidth={1.6} className="size-5" />
+                <X strokeWidth={1.6} className="size-5 enter-scale" />
               ) : (
-                <Menu strokeWidth={1.6} className="size-5" />
+                <Menu strokeWidth={1.6} className="size-5 enter-scale" />
               )}
             </button>
           </div>
@@ -156,16 +171,21 @@ export function Header() {
 
       {/* mobile drawer */}
       {open && (
-        <div className="fixed inset-x-0 bottom-0 top-[70px] z-40 overflow-y-auto bg-white lg:hidden">
+        <div className="drawer-in fixed inset-x-0 bottom-0 top-[70px] z-40 overflow-y-auto border-t border-line bg-white lg:hidden">
           <nav aria-label="Mobile" className="shell flex flex-col py-2">
             {NAV.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-line py-4 text-[16px] text-text"
+                className="flex items-center justify-between border-b border-line py-4 text-[16px] text-text transition-colors duration-200 hover:text-gold-700"
               >
                 {item.label}
+                <ChevronRight
+                  strokeWidth={1.5}
+                  className="size-4 text-text-soft"
+                  aria-hidden="true"
+                />
               </Link>
             ))}
           </nav>

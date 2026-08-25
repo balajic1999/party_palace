@@ -44,7 +44,7 @@ export function MyBookings() {
   return (
     <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div className="lg:col-span-5">
-        <div className="rounded-md border border-line bg-white/50 p-6">
+        <div className="rounded-md border border-line bg-cream p-6 shadow-card">
           <Field
             label="Mobile number"
             htmlFor="lookup-phone"
@@ -72,7 +72,7 @@ export function MyBookings() {
             <button
               type="button"
               onClick={showAll}
-              className="mt-4 w-full text-center text-[12.5px] text-text-soft underline-offset-4 transition-colors hover:text-text-mid hover:underline"
+                      className="mt-4 w-full text-center text-[12.5px] text-text-soft underline-offset-4 transition-colors duration-200 hover:text-text-mid hover:underline"
             >
               Show everything saved on this device
             </button>
@@ -123,8 +123,7 @@ function BookingRow({ booking }: { booking: Booking }) {
       <Link
         href={`/booking/${booking.ref}`}
         className={cn(
-          "group flex items-start justify-between gap-5 rounded-md border border-line p-5",
-          "transition-colors duration-300 ease-out-soft hover:border-gold-500/40 hover:bg-white",
+          "lift group flex items-start justify-between gap-5 rounded-md border border-line bg-white p-5",
           past && "opacity-60",
         )}
       >
@@ -136,7 +135,7 @@ function BookingRow({ booking }: { booking: Booking }) {
             <Badge tone={past ? "off" : "ok"}>{past ? "Past" : "Upcoming"}</Badge>
           </div>
 
-          <h2 className="mt-2.5 text-[21px] leading-none text-text transition-colors group-hover:text-gold-700">
+          <h2 className="mt-2.5 font-display text-[22px] font-semibold leading-tight text-text transition-colors duration-200 group-hover:text-gold-700">
             {pkg?.name ?? "Private theatre"}
           </h2>
 
@@ -190,7 +189,9 @@ function EmptyState({
   return (
     <div className="grid place-items-center rounded-md border border-dashed border-line px-6 py-16 text-center">
       <CalendarX strokeWidth={1} className="size-8 text-text-soft" />
-      <h2 className="mt-5 text-[21px] leading-tight text-text">{title}</h2>
+      <h2 className="mt-5 font-display text-[22px] font-semibold leading-tight text-text">
+        {title}
+      </h2>
       <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-text-mid">{body}</p>
       {action && (
         <ButtonLink href="/book" size="md" className="mt-7">

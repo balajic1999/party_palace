@@ -35,10 +35,10 @@ export function GalleryGrid() {
             }}
             className={cn(
               "rounded-full border px-4 py-2 text-[10.5px] uppercase tracking-[0.14em]",
-              "transition-colors duration-300 ease-out-soft",
+              "transition-all duration-300 ease-out-soft",
               tag === t
-                ? "border-gold-500 bg-gold-50 text-gold-700"
-                : "border-line text-text-mid hover:border-line hover:text-text",
+                ? "border-gold-500 bg-gold-50 text-gold-700 shadow-card"
+                : "border-line text-text-mid hover:-translate-y-px hover:border-gold-400 hover:text-text",
             )}
           >
             {t}
@@ -54,7 +54,8 @@ export function GalleryGrid() {
             onClick={() => setOpen(i)}
             aria-label={`Open photo — ${item.alt}`}
             className={cn(
-              "group relative overflow-hidden rounded-md",
+              "reveal group relative overflow-hidden rounded-md border border-line",
+              "transition-shadow duration-300 ease-out-soft hover:shadow-lift",
             )}
           >
             <Frame
@@ -64,7 +65,12 @@ export function GalleryGrid() {
               seed={item.seed}
               className="transition-transform duration-[700ms] ease-out-soft group-hover:scale-[1.05]"
             />
-            <span className="absolute bottom-3 left-3 z-10 rounded-full border border-line bg-white/75 px-2.5 py-1 text-[9.5px] uppercase tracking-[0.14em] text-text-mid opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+            {/* the plate underneath is dark, so the caption reads white */}
+            <span
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-ink-900/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              aria-hidden="true"
+            />
+            <span className="absolute bottom-3 left-3 z-10 translate-y-1 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[9.5px] uppercase tracking-[0.14em] text-white opacity-0 backdrop-blur-sm transition-all duration-300 ease-out-soft group-hover:translate-y-0 group-hover:opacity-100">
               {item.tag}
             </span>
           </button>

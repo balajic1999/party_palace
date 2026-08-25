@@ -34,6 +34,7 @@ export default async function PolicyPage({
   return (
     <>
       <PageHeader
+        eyebrow="Policies"
         title={policy.title}
         lede={policy.intro}
         crumbs={[{ href: "/", label: "Home" }]}
@@ -42,7 +43,7 @@ export default async function PolicyPage({
       <Section size="tight">
         <div className="grid gap-12 md:grid-cols-12 md:gap-14">
           <nav aria-label="Policies" className="md:col-span-3">
-            <div className="md:sticky md:top-[110px]">
+            <div className="md:sticky md:top-[var(--sticky-top)]">
               <p className="text-[10.5px] uppercase tracking-[0.16em] text-text-soft">
                 All policies
               </p>
@@ -54,8 +55,8 @@ export default async function PolicyPage({
                       aria-current={p.slug === policy.slug ? "page" : undefined}
                       className={
                         p.slug === policy.slug
-                          ? "text-[14px] text-gold-700"
-                          : "text-[14px] text-text-mid transition-colors hover:text-text"
+                          ? "text-[14px] font-semibold text-gold-700"
+                          : "link-sweep text-[14px] text-text-mid transition-colors duration-200 hover:text-gold-700"
                       }
                     >
                       {p.title}
@@ -69,8 +70,8 @@ export default async function PolicyPage({
           <div className="md:col-span-9">
             <div className="space-y-10">
               {policy.sections.map((s, i) => (
-                <section key={s.heading}>
-                  <h2 className="flex items-baseline gap-4 text-[22px] leading-tight text-text">
+                <section key={s.heading} className="reveal">
+                  <h2 className="flex items-baseline gap-4 font-display text-[24px] font-semibold leading-tight text-text">
                     <span className="tnum text-[11px] tracking-[0.16em] text-gold-600">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -87,7 +88,7 @@ export default async function PolicyPage({
               ))}
             </div>
 
-            <div className="mt-12 rounded-md border border-line bg-white/50 p-6">
+            <div className="mt-12 rounded-md border border-line bg-cream p-6">
               <p className="text-[14px] leading-relaxed text-text-mid">
                 Questions about this policy? Call{" "}
                 <a

@@ -53,9 +53,9 @@ export function Calendar({
     "grid size-9 place-items-center rounded-full border border-line text-text transition-colors hover:border-gold-500 hover:text-gold-700 disabled:pointer-events-none disabled:opacity-30";
 
   return (
-    <div className="rounded-md border border-line p-4 sm:p-5">
+    <div className="rounded-md border border-line bg-white p-4 sm:p-5 shadow-card">
       <div className="flex items-center justify-between">
-        <p className="text-[15px] text-text">
+        <p className="font-display text-[18px] font-semibold text-text">
           {cursor.toLocaleDateString("en-IN", { month: "long", year: "numeric" })}
         </p>
         <div className="flex gap-2">
@@ -113,13 +113,13 @@ export function Calendar({
               onClick={() => onChange(iso)}
               className={cn(
                 "relative grid aspect-square place-items-center rounded-sm text-[13.5px]",
-                "transition-colors duration-200",
+                "transition-all duration-200 ease-out-soft",
                 selected
-                  ? "bg-gold-500 font-medium text-ink-900"
+                  ? "bg-gold-500 font-semibold text-ink-900 shadow-card"
                   : disabled
                     ? "cursor-not-allowed text-text-soft/40"
-                    : "text-text hover:bg-cream",
-                isToday && !selected && "ring-1 ring-inset ring-ink-600",
+                    : "text-text hover:bg-gold-50 hover:text-gold-700",
+                isToday && !selected && "ring-1 ring-inset ring-gold-400",
               )}
             >
               <span className="tnum">{d.getDate()}</span>

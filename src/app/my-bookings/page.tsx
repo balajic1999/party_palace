@@ -14,7 +14,8 @@ export default function MyBookingsPage() {
   return (
     <>
       <PageHeader
-        title="Find a booking."
+        eyebrow="My bookings"
+        title="Find a booking"
         lede="Enter the mobile number you booked with and we'll show your slots, references and what's still to pay."
         crumbs={[{ href: "/", label: "Home" }]}
       />
