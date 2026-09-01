@@ -16,34 +16,35 @@ export const policies: Policy[] = [
     title: "Refunds & rescheduling",
     updated: "August 2026",
     intro:
-      "The short version: tell us more than 48 hours ahead and nothing is lost. Inside 48 hours the advance stays with us, because the room is blocked and the decor is usually already ordered.",
+      "The short version: cancel more than 10 days ahead and the advance comes back. Inside 10 days it stays with us, because the room is blocked and the decoration is usually already ordered.",
     sections: [
       {
         heading: "The advance",
         body: [
-          "A ₹750 advance is collected when you book. It is adjusted against your final bill on the day of your celebration.",
+          "A ₹2,000 advance is collected when you book. It is adjusted against your final bill on the day of your celebration.",
           "The balance is settled at the venue, by cash or UPI, before your slot ends.",
         ],
       },
       {
         heading: "Cancelling",
         body: [
-          "More than 48 hours before your slot: the advance is held as credit and can be used against any booking in the next 90 days.",
-          "Within 48 hours of your slot: the advance is not refundable.",
+          "More than 10 days before your slot: the advance is refunded.",
+          "Within 10 days of your slot: the advance is not refundable.",
           "If we cancel for any reason on our side, the advance is refunded in full to the original payment method within 5 to 7 working days.",
         ],
       },
       {
         heading: "Rescheduling",
         body: [
-          "One free reschedule per booking, if you tell us at least 24 hours before your slot and an alternative slot is open.",
+          "Once a slot is confirmed the time cannot be changed. Please pick your slot carefully.",
           "Rooftop bookings affected by rain can be moved indoors at no charge, or rescheduled free of cost.",
         ],
       },
       {
         heading: "Damage & conduct",
         body: [
-          "Damage to the screen, seating, lighting or sound equipment is charged at repair cost.",
+          "Any damage to the property — the screen, seating, lighting, decoration or sound equipment — is charged at repair cost, in addition to your bill.",
+          "Outside snacks and cool drinks are not allowed. Party poppers and snow sprays are strictly not permitted anywhere on the premises.",
           "Smoking and alcohol are not permitted anywhere on the premises. We reserve the right to end a slot early, without refund, if this is ignored.",
         ],
       },
@@ -69,6 +70,15 @@ export const policies: Policy[] = [
         body: [
           "Party Palace is a private venue, not a cinema. We do not screen films that are currently in theatrical release.",
           "You choose and log into your own streaming account, or bring your own media. You are responsible for having the right to play the content you bring.",
+        ],
+      },
+      {
+        heading: "What a booking covers",
+        body: [
+          "Every package includes its decoration. The price on the card covers a stated number of members; anyone beyond that is charged the extra-member rate for that room.",
+          "Children under seven are not counted as members and are not charged.",
+          "The midnight slot carries a flat ₹2,000 surcharge.",
+          "Customised decoration is available. The cost depends on the balloon colours and the design — ask us for a quote before you book.",
         ],
       },
       {

@@ -6,7 +6,7 @@ import { CalendarPlus, Check, Loader2, MessageCircle, Printer } from "lucide-rea
 
 import { TicketStub } from "@/components/booking/ticket-stub";
 import { Button, ButtonLink } from "@/components/ui/button";
-import { packageBySlug } from "@/content/packages";
+import { packageBySlug, resolvePack } from "@/content/packages";
 import { slotById } from "@/content/slots";
 import { site, addressOneLine, whatsappLink } from "@/content/site";
 import { getBooking } from "@/lib/storage";
@@ -103,11 +103,12 @@ export function Confirmation({ reference }: { reference: string }) {
   }
 
   const pkg = packageBySlug(booking.pkg);
+  const pack = pkg ? resolvePack(pkg, booking.pack) : undefined;
   const slot = slotById(booking.slot);
 
   const shareText = [
     `We're booked at Party Palace 🎬`,
-    pkg ? pkg.name : "",
+    pkg ? `${pkg.name}${pack ? ` — ${pack.label}` : ""}` : "",
     booking.date
       ? fromISODate(booking.date).toLocaleDateString("en-IN", {
           weekday: "long",

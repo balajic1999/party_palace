@@ -5,7 +5,7 @@ import { BookingWizard } from "@/components/booking/wizard";
 export const metadata: Metadata = {
   title: "Book a slot",
   description:
-    "Book a private theatre slot at Party Palace, Tirupati. Pick your room, date and slot, add a cake and decor, and hold it with a ₹750 advance.",
+    "Book a private theatre slot at Party Palace, Tirupati. Pick your room, date and slot, add a cake and decor, and hold it with a ₹2,000 advance.",
   robots: { index: false, follow: true },
 };
 

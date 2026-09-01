@@ -3,6 +3,10 @@ export type AddOn = {
   name: string;
   price: number;
   note?: string;
+  /** What you get, spelled out. Rendered as a list wherever there is room. */
+  details?: string[];
+  /** Short flag beside the name — "Save ₹400", "Best value". */
+  badge?: string;
 };
 
 export type AddOnGroup = {
@@ -16,36 +20,113 @@ export type AddOnGroup = {
 
 /**
  * Optional extras on top of a package. Every package already includes its own
- * decor and food — these are upgrades.
- * Prices are placeholders; confirm with the owner.
+ * decoration — these are additions to it.
+ *
+ * Decor and cake prices come from the printed add-on card (PackageDetails.pdf);
+ * photography comes from the photography package sheet.
  */
 export const addOnGroups: AddOnGroup[] = [
   {
-    id: "extras",
-    name: "Add a little extra",
-    blurb: "Timed to your cue by the attendant on duty. All optional.",
+    id: "decor",
+    name: "Decoration & entry",
+    blurb:
+      "Set up and timed to your cue by the attendant on duty. Customised decoration is available too — the cost depends on the balloon colours and the design.",
     items: [
-      { id: "decor-upgrade", name: "Premium decor upgrade", price: 799, note: "Balloon ceiling or floral arch" },
-      { id: "fog", name: "Fog entry", price: 399, note: "Low fog as the door opens" },
-      { id: "pyro", name: "Cold pyros (pair)", price: 499, note: "Indoor-safe sparks" },
-      { id: "led-board", name: "LED name board", price: 299 },
-      { id: "rose-path", name: "Rose petal path", price: 299 },
-      { id: "photography", name: "Photographer, 30 minutes", price: 999, note: "Edited photos within 48 hours" },
+      { id: "fog-entry", name: "Fog entry", price: 1500, note: "Low fog as the door opens" },
+      { id: "rose-petal-entry", name: "Rose petal entry", price: 700 },
+      { id: "bubble-entry", name: "Bubble entry", price: 500 },
+      { id: "cold-fire-2", name: "Cold fire, 2 pieces", price: 900, note: "Indoor-safe sparks" },
+      { id: "cold-fire-4", name: "Cold fire, 4 pieces", price: 1300, note: "Indoor-safe sparks" },
+      { id: "flower-bouquet", name: "Flower bouquet", price: 500 },
+      { id: "photo-clips", name: "Photo clips hanging", price: 300, note: "Your photos strung across the room" },
+      { id: "flex-board", name: "Flex board", price: 600, note: "2/3 size" },
+      { id: "hunter-box-extra", name: "For Hunter", price: 700 },
+      { id: "fun-box-extra", name: "Fun Box", price: 500 },
+      { id: "love-box-extra", name: "Love Box", price: 500 },
     ],
   },
   {
-    id: "food",
-    name: "Food & drinks",
-    blurb: "Served at your seat. Outside food is fine too — there is no corkage.",
-    quantity: true,
+    id: "photography",
+    name: "Photography & video",
+    blurb:
+      "Capturing your special moments in the private theatre — timeless and memorable. Professional-grade photos, delivered digitally in HD. Pick one session length; the video add-on works with any of them.",
     items: [
-      { id: "popcorn", name: "Popcorn + soda combo", price: 299, note: "Serves 2" },
-      { id: "nachos", name: "Loaded nachos platter", price: 349 },
-      { id: "snackbox", name: "Party snack box", price: 549, note: "Serves 4" },
-      { id: "mocktail", name: "Mocktail pitcher", price: 399, note: "Serves 4" },
-      { id: "cake-upgrade", name: "Upgrade to a 1kg cake", price: 650 },
+      {
+        id: "photo-quick",
+        name: "Quick Moments — 30 minutes",
+        price: 1200,
+        note: "The essentials, done quickly",
+        details: ["Unlimited photos", "Delivered digitally in HD"],
+      },
+      {
+        id: "photo-hour",
+        name: "Celebration Hour — 1 hour",
+        price: 2000,
+        badge: "Save ₹400",
+        note: "Time enough to shoot the whole group",
+        details: [
+          "Unlimited photos",
+          "Group and solo shots",
+          "Natural and posed styles",
+          "One location or room setup",
+          "Delivered digitally in HD",
+        ],
+      },
+      {
+        id: "photo-grand",
+        name: "Grand Memories — 2 hours",
+        price: 3500,
+        badge: "Best value · Save ₹700",
+        note: "The full celebration, start to finish",
+        details: [
+          "Unlimited photos",
+          "Multiple group and solo captures",
+          "Candid and artistic photography",
+          "2 outfit changes, if you want them",
+          "Multiple room and angle setups",
+          "Delivered digitally in HD",
+        ],
+      },
+      {
+        id: "photo-video",
+        name: "Entry + cake cutting video",
+        price: 400,
+        note: "Adds to any session above",
+        details: ["Your entry, filmed", "The cake cutting, filmed"],
+      },
     ],
   },
+  {
+    id: "cake",
+    name: "Cake upgrades",
+    blurb:
+      "On top of the cake that comes with your pack. Pick the flavour separately — every flavour on the list is included at no extra cost.",
+    items: [
+      { id: "cake-eggless", name: "Eggless", price: 300 },
+      { id: "cake-photo", name: "Photo cake", price: 300, note: "Your photo printed on top" },
+      { id: "cake-red-velvet", name: "Red velvet", price: 300 },
+    ],
+  },
+];
+
+/**
+ * Every flavour on the cake list. Free to choose — the paid upgrades
+ * (eggless, photo, red velvet) are add-ons above.
+ */
+export const cakeFlavours = [
+  "Cool Cake",
+  "Vanilla",
+  "Black Forest",
+  "Strawberry",
+  "Pineapple",
+  "Kiwi",
+  "Black Currant",
+  "Mango",
+  "Butterscotch",
+  "Blueberry",
+  "Choco Truffle",
+  "Italian Cake",
+  "Choco Nuts",
 ];
 
 export const allAddOns: AddOn[] = addOnGroups.flatMap((g) => g.items);

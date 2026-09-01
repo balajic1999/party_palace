@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { Frame } from "@/components/ui/frame";
 import { ButtonLink } from "@/components/ui/button";
-import type { Package } from "@/content/packages";
+import { defaultPack, packageFrom, type Package } from "@/content/packages";
 import { cn, formatINR } from "@/lib/utils";
 
 export function PackageCard({ pkg, className }: { pkg: Package; className?: string }) {
@@ -40,12 +40,25 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
 
         <div className="mt-4 flex items-end justify-between gap-3 border-b border-line pb-4">
           <span className="text-[11px] uppercase tracking-[0.12em] text-text-soft">
-            Starts from
+            {pkg.packs.length > 1 ? "Starts from" : "Package"}
           </span>
           <span className="tnum text-[24px] font-bold leading-none text-coral-700">
-            {formatINR(pkg.price)}
+            {formatINR(packageFrom(pkg))}
           </span>
         </div>
+
+        <ul className="mt-3 divide-y divide-line border-b border-line text-[12.5px]">
+          {pkg.packs.map((d) => (
+            <li key={d.id} className="flex items-baseline justify-between gap-3 py-1.5">
+              <span className="text-text-mid">
+                {d.label} &middot; {d.baseGuests} {d.baseGuests === 1 ? "member" : "members"}
+              </span>
+              <span className="tnum shrink-0 font-semibold text-text">
+                {formatINR(d.price)}
+              </span>
+            </li>
+          ))}
+        </ul>
 
         <ul className="mt-4 space-y-2">
           {pkg.features.map((f) => (
@@ -65,7 +78,11 @@ export function PackageCard({ pkg, className }: { pkg: Package; className?: stri
           >
             View Details
           </ButtonLink>
-          <ButtonLink href={`/book?pkg=${pkg.slug}`} size="sm" className="flex-1">
+          <ButtonLink
+            href={`/book?pkg=${pkg.slug}&pack=${defaultPack(pkg).id}`}
+            size="sm"
+            className="flex-1"
+          >
             Book Now
           </ButtonLink>
         </div>
@@ -92,10 +109,10 @@ export function PackageCardCompact({ pkg }: { pkg: Package }) {
           {pkg.name}
         </h3>
         <p className="mt-2 text-[11px] uppercase tracking-[0.12em] text-text-soft">
-          Starts from
+          {pkg.packs.length > 1 ? "Starts from" : "Package"}
         </p>
         <p className="tnum mt-0.5 text-[22px] font-bold leading-none text-coral-700">
-          {formatINR(pkg.price)}
+          {formatINR(packageFrom(pkg))}
         </p>
       </div>
     </Link>

@@ -1,6 +1,6 @@
 import { Crown } from "@/components/layout/logo";
 import type { Booking } from "@/lib/types";
-import { packageBySlug } from "@/content/packages";
+import { packageBySlug, resolvePack } from "@/content/packages";
 import { slotById } from "@/content/slots";
 import { addOnById } from "@/content/addons";
 import { site, addressLines } from "@/content/site";
@@ -18,6 +18,7 @@ export function TicketStub({
   className?: string;
 }) {
   const pkg = packageBySlug(booking.pkg);
+  const pack = pkg ? resolvePack(pkg, booking.pack) : undefined;
   const slot = slotById(booking.slot);
 
   const extras = Object.entries(booking.addOns)
@@ -42,6 +43,8 @@ export function TicketStub({
       v: slot ? `${to12h(slot.start)} – ${to12h(slot.end)}` : "—",
     },
     { k: "Guests", v: String(booking.guests) },
+    ...(pack ? [{ k: "Pack", v: pack.label }] : []),
+    ...(booking.cakeFlavour ? [{ k: "Cake", v: booking.cakeFlavour }] : []),
   ];
 
   return (
@@ -82,7 +85,7 @@ export function TicketStub({
           </p>
         )}
 
-        <dl className="mt-7 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+        <dl className="mt-7 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
           {facts.map((f) => (
             <div key={f.k}>
               <dt className="text-[9.5px] uppercase tracking-[0.14em] text-text-soft">

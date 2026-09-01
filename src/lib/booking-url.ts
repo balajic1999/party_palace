@@ -32,11 +32,13 @@ export function bookingQuery(draft: BookingDraft, step?: number): URLSearchParam
   const q = new URLSearchParams();
   if (step !== undefined) q.set("step", String(step));
   q.set("pkg", draft.pkg);
+  if (draft.pack) q.set("pack", draft.pack);
   q.set("guests", String(draft.guests));
   if (draft.date) q.set("date", draft.date);
   if (draft.slot) q.set("slot", draft.slot);
   if (draft.celebrant) q.set("celebrant", draft.celebrant);
   if (draft.screenMessage) q.set("msg", draft.screenMessage);
+  if (draft.cakeFlavour) q.set("cake", draft.cakeFlavour);
   const addons = encodeAddOns(draft.addOns);
   if (addons) q.set("addons", addons);
   if (draft.coupon) q.set("coupon", draft.coupon);

@@ -7,7 +7,11 @@ export type Slot = {
   note?: string;
 };
 
-/** Four slots a day, all inside the 10:00 AM – 10:00 PM opening hours. */
+/**
+ * The day's slots. The first four sit inside the 10:00 AM – 10:00 PM opening
+ * hours; the midnight slot runs past them and carries the ₹2,000 surcharge
+ * printed on the rules card.
+ */
 export const slots: Slot[] = [
   { id: "morning", label: "Morning", start: "10:00", end: "12:30", surcharge: 0 },
   { id: "afternoon", label: "Afternoon", start: "13:00", end: "15:30", surcharge: 0 },
@@ -19,6 +23,14 @@ export const slots: Slot[] = [
     end: "21:30",
     surcharge: 0,
     note: "Most requested",
+  },
+  {
+    id: "midnight",
+    label: "Midnight",
+    start: "22:30",
+    end: "00:30",
+    surcharge: 2000,
+    note: "Extra ₹2,000",
   },
 ];
 

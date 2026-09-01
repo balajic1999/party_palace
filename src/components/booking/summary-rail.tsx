@@ -124,8 +124,8 @@ export function SummaryRail({
       )}
 
       <p className="mt-4 text-[11.5px] leading-relaxed text-text-soft">
-        Free reschedule with 24 hours&rsquo; notice. Advance held as credit if you
-        cancel more than 48 hours ahead. Call {site.phone} for anything urgent.
+        Slot times cannot be changed once confirmed. Advance refunded if you
+        cancel more than 10 days ahead. Call {site.phone} for anything urgent.
       </p>
     </div>
   );

@@ -30,11 +30,11 @@ export const site = {
   mapEmbedUrl:
     "https://www.google.com/maps?q=Party+Palace+Private+Theater,+American+Towers,+Leela+Mahal+Circle,+Akkarampalle,+Tirupati,+Andhra+Pradesh+517501&output=embed",
 
-  hoursLabel: "10:00 AM – 10:00 PM",
-  hoursNote: "All days",
+  hoursLabel: "10:00 AM – 12:30 AM",
+  hoursNote: "All days · the midnight slot carries a ₹2,000 surcharge",
 
   /** Advance held at the time of booking; the rest is settled at the venue. */
-  advance: 750,
+  advance: 2000,
 
   socials: {
     instagram: "https://instagram.com/",

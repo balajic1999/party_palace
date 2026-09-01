@@ -15,7 +15,7 @@ import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { inputClass } from "@/components/ui/field";
 
-import { packages } from "@/content/packages";
+import { packages, resolvePack } from "@/content/packages";
 import { coupons } from "@/content/addons";
 import { bookingQuery, decodeAddOns } from "@/lib/booking-url";
 import { quote } from "@/lib/pricing";
@@ -28,19 +28,19 @@ const STEPS = [
     id: 1,
     label: "Package",
     heading: "Which package?",
-    sub: "Every package books the theatre for a full three-hour slot.",
+    sub: "Pick a room, then how long you want it. Decoration is included in every one.",
   },
   {
     id: 2,
     label: "Date",
     heading: "When?",
-    sub: "Four slots a day, seven days a week. Green means open.",
+    sub: "Five slots a day, seven days a week. Green means open.",
   },
   {
     id: 3,
     label: "Extras",
     heading: "Anything to add?",
-    sub: "Your package already covers decor and food. Everything here is optional.",
+    sub: "Your package already covers the decoration. Everything here is optional.",
   },
   {
     id: 4,
@@ -67,14 +67,17 @@ export function BookingWizard() {
   const [draft, setDraft] = useState<BookingDraft>(() => {
     const slug = params.get("pkg") || packages[0].slug;
     const base = packages.find((p) => p.slug === slug) ?? packages[0];
+    const pack = resolvePack(base, params.get("pack") ?? undefined);
     return {
       ...emptyDraft,
       pkg: base.slug,
-      guests: Number(params.get("guests")) || base.baseGuests,
+      pack: pack.id,
+      guests: Number(params.get("guests")) || pack.baseGuests,
       date: params.get("date") || "",
       slot: params.get("slot") || "",
       celebrant: params.get("celebrant") || "",
       screenMessage: params.get("msg") || "",
+      cakeFlavour: pack.cake ? params.get("cake") || "" : "",
       addOns: decodeAddOns(params.get("addons")),
       coupon: params.get("coupon") || "",
     };
@@ -94,6 +97,7 @@ export function BookingWizard() {
     () =>
       quote({
         pkg: draft.pkg,
+        pack: draft.pack,
         guests: draft.guests,
         slot: draft.slot,
         addOns: draft.addOns,

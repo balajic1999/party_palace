@@ -114,7 +114,7 @@ export default function HomePage() {
           eyebrow="Packages"
           title="Priced up front, nothing hidden"
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.slug} delay={i * 0.06} className="h-full">
               <PackageCard pkg={pkg} />
@@ -122,8 +122,7 @@ export default function HomePage() {
           ))}
         </div>
         <p className="mt-8 text-center text-[13.5px] text-text-mid">
-          All packages include the theatre for a full three-hour slot. Hold any
-          slot with a{" "}
+          Decoration is included in every package. Hold any slot with a{" "}
           <span className="tnum font-semibold text-text">{formatINR(site.advance)}</span>{" "}
           advance — the balance is paid at the venue.
         </p>

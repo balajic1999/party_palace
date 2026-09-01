@@ -1,7 +1,7 @@
 import { addOnById, coupons } from "@/content/addons";
 import { site } from "@/content/site";
 import { slotById } from "@/content/slots";
-import { packageBySlug } from "@/content/packages";
+import { packageBySlug, resolvePack } from "@/content/packages";
 import { plural } from "@/lib/utils";
 
 export type PriceLine = {
@@ -23,6 +23,7 @@ export type Quote = {
 
 export type QuoteInput = {
   pkg: string;
+  pack?: string;
   guests: number;
   slot: string;
   addOns: Record<string, number>;
@@ -38,18 +39,22 @@ export function quote(input: QuoteInput): Quote {
   const pkg = packageBySlug(input.pkg);
 
   if (pkg) {
+    const pack = resolvePack(pkg, input.pack);
+
     lines.push({
       key: "base",
-      label: pkg.name,
-      detail: `${pkg.durationHours}-hour slot · up to ${pkg.baseGuests} guests`,
-      amount: pkg.price,
+      label: `${pkg.name} — ${pack.label}`,
+      detail: `${pack.baseGuests} ${plural(pack.baseGuests, "member")}${
+        pack.cake ? ` · ${pack.cake} included` : ""
+      }`,
+      amount: pack.price,
     });
 
-    const extra = Math.max(0, Math.min(input.guests, pkg.maxGuests) - pkg.baseGuests);
-    if (extra > 0) {
+    const extra = Math.max(0, Math.min(input.guests, pkg.maxGuests) - pack.baseGuests);
+    if (extra > 0 && pkg.extraGuestPrice > 0) {
       lines.push({
         key: "extra-guests",
-        label: `${extra} extra ${plural(extra, "guest")}`,
+        label: `${extra} extra ${plural(extra, "member")}`,
         detail: `${pkg.extraGuestPrice} each`,
         amount: extra * pkg.extraGuestPrice,
       });

@@ -324,7 +324,8 @@ export function PaymentPanel() {
               <p className="mt-4 flex items-start gap-2.5 text-[11.5px] leading-relaxed text-text-soft">
                 <ShieldCheck strokeWidth={1.25} className="mt-0.5 size-3.5 shrink-0 text-coral-700" />
                 UPI, card and net banking. Free reschedule with 24 hours&rsquo;
-                notice; advance held as credit if you cancel more than 48 hours out.
+                the slot time cannot change once confirmed; advance refunded if you
+                cancel more than 10 days out.
               </p>
 
               {DEMO.showFailureToggle && (
